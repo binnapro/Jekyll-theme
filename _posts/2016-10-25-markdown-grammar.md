@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Markdown grammar"
-subtitle:   "Markdown, Simple，Gammer"
+subtitle:   "Markdown, Simple,Gammer"
 date:       2016-10-25
 author:     "Binna"
 catalog: true
@@ -10,8 +10,7 @@ tags:
 ---
 
 ### 文字输入
-一般正文内容是直接输入好了
-
+一般正文内容是直接输入好了  
 ### 一级标题
 一级标题就是在文字前面叫上一个#，如 `# 一级标题` 
 
