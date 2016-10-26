@@ -16,7 +16,7 @@ tags:
 <div align="center"><font face="黑体">我是黑体字</font></div>
 <div align="center"><font face="微软雅黑">我是微软雅黑</font></div>
 <div align="center"><span style="background:yellow">设置文字底色</span></div>
-<div align="center"><font color=#0099ff size=5 face="黑体">字体颜色，字体大小，黑体</font></div>
+<center><font color=#0099ff size=5 face="黑体">字体颜色，字体大小，黑体</font></center>
 *代码解释*  
 居中文字就在文字外面添加一个`<div align="center">text</div>`  
 
@@ -24,22 +24,22 @@ tags:
 
 修改文字颜色 `<font color=#0099ff >text</font>`    `<font color=red>text</font>`  
 支持两种方法，第一种是16进制的代码，第二种是直接写出颜色名字，如red，gray等 
-  
+
 修改文字底色 `<span style="background:#ccc">底色</span>`    `==你好==`  
 稍微搜索了以下，发现都是在外面添加表格，但是这样就是一整行了，所以这里使用html的方法创建一个span，在里面添加颜色，这是第一种方法，第二种方法是Markdown语法，就是文字外面加==  
 
 修改文字大小 `<font size=5>text</font>`  
 文字size从1到7。3是默认大小。
- 
+
 
 ### 一级标题
-一级标题就是在文字前面叫上一个#，#和文字之间不用空格如 `# 一级标题`
+一级标题就是在文字前面叫上一个#，#和文字之间不用空格如 `# 一级标题`   
 ### 二级标题
-二级标题就是在文字前面加上二个#，#和空格之间不用空格如 `##二级标题`
+二级标题就是在文字前面加上二个#，#和空格之间不用空格如 `##二级标题`   
 ### 三级标题
-三级标题就是在文字前面加上三个#，#和空格之间不用空格如 `###三级标题`
+三级标题就是在文字前面加上三个#，#和空格之间不用空格如 `###三级标题`   
 
-**注意：**最多可以是6级标题，就是最多可以输入6个#
+**注意：**最多可以是6级标题，就是最多可以输入6个#   
 ### 换行
 你可能发现自己输入一行之后，回车 <kbd>enter</kbd> 再输入，文字还是显示在一行。这里有两种方法来实现换行，
 
@@ -94,10 +94,10 @@ tags:
 插入图片有两种样式，但是都需要图床(就是把图片存在别的地方，我们可以用一个链接来拿到图片)，国内很多公司都有自己的服务器，可以做图床，你要是没有自己服务器来放图片，可以使用别人的，这里推荐[七牛](http://www.qiniu.com/)，把图片存放在七牛，然后拷贝链接后之后就可以用了。
 
 1. 插入图片格式如左`![图片失效显示的文字](拷贝的链接 "hover提示文字")`
- ![git ico](http://of6fmev29.bkt.clouddn.com/git.ico)
+    ![git ico](http://of6fmev29.bkt.clouddn.com/git.ico)
 2. 插入图片格式如下  
-`<img src="拷贝的链接" title="hover提示文字" alt="图片失效显示文字" width="50px" height="50px"/>`  
-使用这种格式来插入的图片可以自己调整图片大小，width代表图片宽度，height代表图片的高度,只输入其中一个参数，另外一个就是自适应的。
-如果我们想要图片居中按下面的格式来  
-`<div align="center"><img src="拷贝的链接" title="hover提示文字" alt="图片失效显示文字" width="50px" height="50px"/></div>`
-<div align="center"><img src="http://of6fmev29.bkt.clouddn.com/git.ico" title="git ico" alt="git ico lost" width="50px"/></div>
+   `<img src="拷贝的链接" title="hover提示文字" alt="图片失效显示文字" width="50px" height="50px"/>`  
+   使用这种格式来插入的图片可以自己调整图片大小，width代表图片宽度，height代表图片的高度,只输入其中一个参数，另外一个就是自适应的。
+   如果我们想要图片居中按下面的格式来  
+   `<div align="center"><img src="拷贝的链接" title="hover提示文字" alt="图片失效显示文字" width="50px" height="50px"/></div>`
+   <div align="center"><img src="http://of6fmev29.bkt.clouddn.com/git.ico" title="git ico" alt="git ico lost" width="50px"/></div>
