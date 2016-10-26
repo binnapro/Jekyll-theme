@@ -12,11 +12,11 @@ tags:
 ### 文字输入
 一般正文内容是直接输入好了  
 但是如果想要改变文字字体和改变文字颜色，甚至是文字底色就比较麻烦一点
-<br/>
-<div align="center"><font face="黑体">我是黑体字</font></div>
-<div align="center"><font face="微软雅黑">我是微软雅黑</font></div>
-<div align="center"><span style="background:yellow">设置文字底色</span></div>
-<center><font color=#0099ff size=5 face="黑体">字体颜色，字体大小，黑体</font></center>
+
+<font face="黑体">我是黑体字</font>
+<font face="微软雅黑">我是微软雅黑</font>
+<span style="background:yellow">设置文字底色</span>
+<font size=7>字体大小</font>
 *代码解释*  
 居中文字就在文字外面添加一个`<div align="center">text</div>`  
 
