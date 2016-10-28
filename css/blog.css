@@ -1100,12 +1100,14 @@ img::-moz-selection {
   top:30px;
   left:30px;
   font-size:40px;
+  display:none;
 }
 #fa-arrow-circle-up-size{
   position:fixed;
   bottom:30px;
   right:30px;
   font-size:50px;
+  display:none;
 }
 .nihao{
   font-size:20px !important;

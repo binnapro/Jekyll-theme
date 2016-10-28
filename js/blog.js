@@ -88,9 +88,9 @@ window.onscroll=function(){
     var scrolltop = document.body.scrollTop ? scrolltop : document.documentElement.scrollTop;
     if(scrolltop > 550){
         backtop.style.display = "block";
-        homeback.style.dispaly= "block";
+        homeback.style.display= "block";
     }else{
         backtop.style.display = "none";
-        homeback.style.dispaly = "none";
+        homeback.style.display = "none";
     }
 }
