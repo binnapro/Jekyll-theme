@@ -1,24 +1,24 @@
 # Site settings
 title: Binna's Blog
-SEOTitle: Hey丙醛的博客 | Binna Blog
-header-img: "http://picture.emptystack.top/blog/home-bg.jpg"
+SEOTitle: Hey丙醛的个人网站 | Binna's Personal Website
+header-img: "http://picture.emptystack.top/blog/home-bg-o.jpg"
 email: binnayao@qq.com
 description: "关于前端与设计 | 丙醛，Front-End Engineer | 这里是 @Binna丙醛 的个人博客，与你一起发现更大的世界。"
-keyword: "丙醛, Binna丙醛, Binna, 饭米粒, 空栈, 空堆栈, 丙醛的博客, Binna Blog, 博客, 个人网站, 互联网, 前端"
-url: "https://binnayao.github.io"              # your host, for absolute URL
+keyword: "丙醛, Binna丙醛, Binna, 饭米粒, 丙醛的博客, Binna Blog, 博客, 个人网站, 互联网, 前端"
+url: "emptystack.top"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 
 
 # SNS settings
 RSS: false
-#weibo_username:     Hey丙醛
-#zhihu_username:     binna
+weibo_username:     /u/3749521671
+zhihu_username:     bing-quan-40
 github_username:    binnayao
 #twitter_username:  huxpro
 #facebook_username:  huxpro
 # linkedin_username:  firstname-lastname-idxxxx
-
+email:  binnayao@qq.com
 
 
 # Build settings
@@ -91,8 +91,8 @@ service-worker: true
 # Friends
 friends: [
     {
-        title: "Su",
-        href: "http://su.gallery/"
+        title: "赵达的个人网站",
+        href: "http://zhaoda.net/"
     },{
         title: "乱序",
         href: "http://mida.re/"
@@ -106,11 +106,11 @@ friends: [
         title: "Luke 的自留地",
         href: "http://hmqk1995.github.io"
     },{
-        title: "Ebn's Blog",
-        href: "http://ebnbin.com/"
+        title: "Hux Blog",
+        href: "huangxun.me"
     },{
-        title: "SmdCn's Blog",
-        href: "http://blog.smdcn.net"
+        title: "Denight Blog",
+        href: "http://leanote.com/blog/denight"
     },{
         title: "解旻的博客",
         href: "http://xieminis.me/"

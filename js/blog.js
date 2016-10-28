@@ -82,3 +82,15 @@ jQuery(document).ready(function($) {
             });
     }
 });
+window.onscroll=function(){
+    var backtop = document.getElementById("fa-arrow-circle-up-size");
+    var homeback = document.getElementById("fa-home-size");
+    var scrolltop = document.body.scrollTop ? scrolltop : document.documentElement.scrollTop;
+    if(scrolltop > 550){
+        backtop.style.display = "block";
+        homeback.style.dispaly= "block";
+    }else{
+        backtop.style.display = "none";
+        homeback.style.dispaly = "none";
+    }
+}

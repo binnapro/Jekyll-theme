@@ -15,10 +15,10 @@ description: "我们的目标是星辰大海"
         </h3>
         {% endif %}
         <div class="post-content-preview">
-            {{ post.content | strip_html | truncate:200 }}
+            {{ post.content | strip_html | truncate:150 }}
         </div>
     </a>
-    <div class="fa fa-clock-o">
+    <div class="fa fa-calendar-o fa-calendar-o-size">
         <span class="post-meta">
             Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
         </span>
