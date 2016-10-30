@@ -687,7 +687,7 @@ pre code {
 }
 footer {
   font-size: 20px;
-  padding: 50px 0 65px;
+  padding: 50px 0 45px;
 }
 footer .list-inline {
   margin: 0;
@@ -1097,20 +1097,22 @@ img::-moz-selection {
 }
 #fa-home-size{
   position:fixed;
-  top:30px;
-  left:30px;
+  top:15px;
+  left:8px;
   font-size:40px;
   display:none;
+  z-index:9999;
 }
 #fa-arrow-circle-up-size{
   position:fixed;
-  bottom:30px;
-  right:30px;
+  bottom:15px;
+  right:8px;
   font-size:50px;
   display:none;
+  z-index:9999;
 }
 .nihao{
-  font-size:20px !important;
+  font-size:16px !important;
 }
 footer .copyright{
   margin-top:13px;

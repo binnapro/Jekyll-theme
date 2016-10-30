@@ -10,7 +10,7 @@ layout: default
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('{{ site.baseurl }}{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
+        background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
     }
 
     {% if page.header-mask %}
@@ -122,6 +122,18 @@ layout: default
 {% if site.anchorjs %}
 <!-- async load function -->
 <script>
+    window.onscroll=function(){
+    var backtop = document.getElementById("fa-arrow-circle-up-size");
+    var homeback = document.getElementById("fa-home-size");
+    var scrolltop = document.body.scrollTop ? scrolltop : document.documentElement.scrollTop;
+    if(scrolltop > 550){
+        backtop.style.display = "block";
+        homeback.style.display= "block";
+    }else{
+        backtop.style.display = "none";
+        homeback.style.display = "none";
+    }
+}
     function pageScroll() {
         var scrolldelay = setInterval(function(){
             window.scrollBy(0,-50);

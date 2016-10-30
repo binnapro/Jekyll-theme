@@ -1,11 +1,11 @@
 # Site settings
 title: Binna's Blog
 SEOTitle: Hey丙醛的个人网站 | Binna's Personal Website
-header-img: "https://ofsjy8rwf.qnssl.com/blog/home-bg-o.jpg"
+header-img: "img/home-bg-o.jpg"
 email: binnayao@qq.com
 description: "关于前端与设计 | 丙醛，Front-End Engineer | 这里是 @Binna丙醛 的个人博客，与你一起发现更大的世界。"
 keyword: "丙醛, Binna丙醛, Binna, 饭米粒, 丙醛的博客, Binna Blog, 博客, 个人网站, 互联网, 前端"
-url: "emptystack.top"              # your host, for absolute URL
+url: "binna.site"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 
@@ -72,7 +72,7 @@ kramdown:
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "我们的目标是星辰大海"
-sidebar-avatar: "https://ofsjy8rwf.qnssl.com/1.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: "/img/1.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
