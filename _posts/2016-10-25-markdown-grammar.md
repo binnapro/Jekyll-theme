@@ -86,10 +86,11 @@ tags:
 插入图片有两种样式，但是需要图床（就是把图片存放在别的地方，我们可以用一个i额链接来拿到图片），国内很多公司都有自己的服务器，可以做图床，你要是没有自己的服务器来存放图片，可以使用别人的，这里推荐[七牛](http://www.qiniu.com/)，然后拷贝链接黏贴到指定位置就可以了
 1. 插入图片格式如左`![图片失效显示的文字](拷贝的链接 "hover提示文字")`
 
-   ![git ico](http://of6fmev29.bkt.clouddn.com/git.ico "git ico")
+   ![git ico](https://ofsjy8rwf.qnssl.com/ico/git.ico "git ico")
 
 2. 插入图片格式如下
 
    `<img src="拷贝的链接" title="hover提示文字" alt="图片失效显示文字" width="50px" height="50px"/>`
 
-   <img src="http://of6fmev29.bkt.clouddn.com/git.ico" title="git ico" alt="你的git ico不见了" width="50px"/>
+   <img src="https://ofsjy8rwf.qnssl.com/ico/git.ico" title="git ico" alt="你的git ico不见了" width="50px"/>
+

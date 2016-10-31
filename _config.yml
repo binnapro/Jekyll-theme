@@ -91,8 +91,12 @@ service-worker: true
 # Friends
 friends: [
     {
-        title: "赵达的个人网站",
-        href: "http://zhaoda.net/"
+        title: "士涛的博客",
+        href: "http://my.csdn.net/nk_test"
+    
+    },{
+        title: "Denight Blog",
+        href: "http://leanote.com/blog/denight"
     },{
         title: "乱序",
         href: "http://mida.re/"
@@ -109,8 +113,8 @@ friends: [
         title: "Hux Blog",
         href: "huangxun.me"
     },{
-        title: "Denight Blog",
-        href: "http://leanote.com/blog/denight"
+        title: "赵达的个人网站",
+        href: "http://zhaoda.net/"
     },{
         title: "解旻的博客",
         href: "http://xieminis.me/"
