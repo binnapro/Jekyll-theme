@@ -1097,9 +1097,9 @@ img::-moz-selection {
 }
 #fa-home-size{
   position:fixed;
-  top:55px;
+  top:58px;
   left:8px;
-  font-size:40px;
+  font-size:35px;
   display:none;
   z-index:9999;
 }
@@ -1107,7 +1107,7 @@ img::-moz-selection {
   position:fixed;
   bottom:15px;
   right:8px;
-  font-size:50px;
+  font-size:40px;
   display:none;
   z-index:9999;
 }

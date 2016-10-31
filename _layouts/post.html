@@ -45,7 +45,7 @@ layout: default
     </div>
 </header>
 <a href="{{ site.baseurl }}/"><span class="fa fa-home" id="fa-home-size"></span></a>
-<a href="javascript:pageScroll();"><span class="fa fa-arrow-circle-up" id="fa-arrow-circle-up-size"></span></a>
+<a href="#"><span class="fa fa-arrow-circle-up" id="fa-arrow-circle-up-size"></span></a>
 
 <!-- Post Content -->
 <article>
@@ -123,26 +123,17 @@ layout: default
 <!-- async load function -->
 <script>
     window.onscroll=function(){
-    var backtop = document.getElementById("fa-arrow-circle-up-size");
-    var homeback = document.getElementById("fa-home-size");
-    var scrolltop = document.body.scrollTop ? scrolltop : document.documentElement.scrollTop;
-    if(scrolltop > 550){
-        backtop.style.display = "block";
-        homeback.style.display= "block";
-    }else{
-        backtop.style.display = "none";
-        homeback.style.display = "none";
-    }
-}
-    function pageScroll() {
-        var scrolldelay = setInterval(function(){
-            window.scrollBy(0,-50);
-            var docScroll = document.body.scrollTop ? docScroll : document.documentElement.scrollTop;
-        if(docScroll == 0){
-            clearTimeout(scrolldelay); 
+        var backtop = document.getElementById("fa-arrow-circle-up-size");
+        var homeback = document.getElementById("fa-home-size");
+        var scrolltop = document.body.scrollTop ? scrolltop : document.documentElement.scrollTop;
+        if(scrolltop > 550){
+            backtop.style.display = "block";
+            homeback.style.display= "block";
+        }else{
+            backtop.style.display = "none";
+            homeback.style.display = "none";
         }
-        },10);
-    } 
+    }
     function async(u, c) {
       var d = document, t = 'script',
           o = d.createElement(t),
