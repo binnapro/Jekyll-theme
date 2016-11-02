@@ -2,7 +2,7 @@
 layout: post
 title: "GIT及SVN服务器搭建"
 subtitle: "build git and svn server"
-date: 2016-10-31 20:55:15
+date: 2016-10-31
 catalog: true
 header-img:
 tags:
