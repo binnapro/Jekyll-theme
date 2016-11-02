@@ -173,7 +173,7 @@ a:focus {
 }
 a img:hover,
 a img:focus {
-  cursor: zoom-in;
+  cursor: pointer;
 }
 article {
   overflow-x: hidden;
@@ -982,6 +982,9 @@ img::-moz-selection {
   max-width: 100%;
   height: auto;
   margin: 1.5em auto 1.6em auto;
+}
+a img{
+	display: inline-block !important;
 }
 /* Hux Optimize UserExperience */
 .navbar-default .navbar-toggle:focus,
