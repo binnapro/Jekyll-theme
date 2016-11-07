@@ -985,6 +985,7 @@ img::-moz-selection {
 }
 a img{
 	display: inline-block !important;
+  margin:0;
 }
 /* Hux Optimize UserExperience */
 .navbar-default .navbar-toggle:focus,
