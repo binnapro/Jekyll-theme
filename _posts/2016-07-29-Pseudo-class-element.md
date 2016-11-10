@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "关于伪类元素:before和:after"
-subtitile: "about Pseudo-class element :before and :after"
+subtitle: "about Pseudo-class element :before and :after"
 date: 2016-07-29 10:48:19 
 author: "Binna"
 header-img: 
