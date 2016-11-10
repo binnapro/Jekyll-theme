@@ -13,12 +13,7 @@ tags:
 
 # rc-form
 
-[![npm](https://img.shields.io/npm/v/rc-form.svg?style=flat-square)](https://npmjs.org/package/rc-form)
-[![build](https://img.shields.io/travis/react-component/form.svg?style=flat-square)](https://travis-ci.org/react-component/form)
-[![coverage](https://img.shields.io/coveralls/react-component/form.svg?style=flat-square)](https://coveralls.io/r/react-component/form?branch=master)
-[![dependencies](https://img.shields.io/gemnasium/react-component/form.svg?style=flat-square)](https://gemnasium.com/react-component/form)
-[![nodejs](https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square)](http://nodejs.org/download/)
-[![download](https://img.shields.io/npm/dm/rc-form.svg?style=flat-square)](https://npmjs.org/package/rc-form)
+[![npm](https://img.shields.io/npm/v/rc-form.svg?style=flat-square)](https://npmjs.org/package/rc-form)[![build](https://img.shields.io/travis/react-component/form.svg?style=flat-square)](https://travis-ci.org/react-component/form)[![coverage](https://img.shields.io/coveralls/react-component/form.svg?style=flat-square)](https://coveralls.io/r/react-component/form?branch=master)[![dependencies](https://img.shields.io/gemnasium/react-component/form.svg?style=flat-square)](https://gemnasium.com/react-component/form)[![nodejs](https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square)](http://nodejs.org/download/)[![download](https://img.shields.io/npm/dm/rc-form.svg?style=flat-square)](https://npmjs.org/package/rc-form)
 
 ## 展开
 
@@ -41,7 +36,7 @@ npm start
 
 ## 用法
 
-```jsx
+```javascript
 import { createForm } from 'rc-form';
 
 class Form extends React.Component {
@@ -71,7 +66,7 @@ export createForm()(Form);
 
 或者更快的用法：
 
-```jsx
+```js
 import { createForm } from 'rc-form';
 
 class Form extends React.Component {
