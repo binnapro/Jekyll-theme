@@ -1121,3 +1121,6 @@ a img{
 footer .copyright{
   margin-top:13px;
 }
+.post-preview .post-meta {
+    font-size: 13px;
+  }
