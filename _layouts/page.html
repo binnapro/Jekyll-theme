@@ -11,6 +11,9 @@ layout: default
                     <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
                     <!--<hr class="small">-->
                     <span class="subheading">{{ page.description }}</span>
+                    {% if page.bref %}
+                    <span class="subheading">{{page.bref}}</span>
+                    {% endif %}
                 </div>
             </div>
         </div>
