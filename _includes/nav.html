@@ -1,4 +1,5 @@
 <!-- Navigation -->
+<div class="maskDiv" style="display:none"></div>
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -39,20 +40,23 @@
     var $toggle = document.querySelector('.navbar-toggle');
     var $navbar = document.querySelector('#huxblog_navbar');
     var $collapse = document.querySelector('.navbar-collapse');
+    var $maskDiv = document.querySelector('.maskDiv');
 
-    var __HuxNav__ = {
+    var __BinnaNav__ = {
         close: function(){
             $navbar.className = " ";
             // wait until animation end.
             setTimeout(function(){
                 // prevent frequently toggle
                 if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
+                    $collapse.style.height = "0px";
+                    $maskDiv.style.display = "none";
                 }
-            },400)
+            },400);
         },
         open: function(){
-            $collapse.style.height = "auto"
+            $collapse.style.height = "auto";
+            $maskDiv.style.display = "block";
             $navbar.className += " in";
         }
     }
@@ -60,12 +64,16 @@
     // Bind Event
     $toggle.addEventListener('click', function(e){
         if ($navbar.className.indexOf('in') > 0) {
-            __HuxNav__.close()
+            __BinnaNav__.close();
         }else{
-            __HuxNav__.open()
+            __BinnaNav__.open();
         }
-    })
+    });
 
+    $maskDiv.addEventListener('click',function(e){
+        console.log("jkfdkfj");
+        __BinnaNav__.close();
+    });
     /**
      * Since Fastclick is used to delegate 'touchstart' globally
      * to hack 300ms delay in iOS by performing a fake 'click',
@@ -80,6 +88,6 @@
     document.addEventListener('click', function(e){
         if(e.target == $toggle) return;
         if(e.target.className == 'icon-bar') return;
-        __HuxNav__.close();
+        __BinnaNav__.close();
     })
 </script>

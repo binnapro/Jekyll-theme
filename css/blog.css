@@ -12,6 +12,13 @@ a:focus {
     padding-right: 5%;
   }
 }
+.maskDiv {
+  height:100%;
+  width:100%;
+  position:fixed;
+  top:0px;
+  left:0px;
+}
 .sidebar-container {
   color: #bfbfbf;
   font-size: 14px;
