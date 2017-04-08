@@ -52,6 +52,8 @@
                     if($navbar.className.indexOf('in') < 0) {
                         $collapse.style.height = "0px";
                         $body.style.overflow = 'auto';
+                        $body.style.height = 'auto';
+                        $html.style.overflow = 'auto';
                         $html.style.height = 'auto';
                     }
                 },400);
@@ -60,7 +62,9 @@
                 $collapse.style.height = "auto";
                 $maskDiv.style.display = "block";
                 $body.style.overflow = 'hidden';
-                $html.style.height = window.innerHeight + 'px';
+                $body.style.height = "100%";
+                $html.style.height = "100%";
+                $html.style.overflow = "hidden";
                 $navbar.className += " in";
             }
         }
