@@ -39,7 +39,7 @@
     var $toggle = document.querySelector('.navbar-toggle');
     var $navbar = document.querySelector('#huxblog_navbar');
     var $collapse = document.querySelector('.navbar-collapse');
-    
+
     window.onload = function(){
         var $maskDiv = document.querySelector('.maskDiv');
         var __BinnaNav__ = {
@@ -52,6 +52,7 @@
                     if($navbar.className.indexOf('in') < 0) {
                         $collapse.style.height = "0px";
                         $body.style.overflow = 'auto';
+                        $body.style.height = 'auto';
                     }
                 },400);
             },
@@ -59,6 +60,7 @@
                 $collapse.style.height = "auto";
                 $maskDiv.style.display = "block";
                 $body.style.overflow = 'hidden';
+                $body.style.height = window.innerHeight + 'px';
                 $navbar.className += " in";
             }
         }
