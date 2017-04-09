@@ -50,3 +50,16 @@ typings
 _site
 
 *.sh
+.sync/*
+
+.me_configs.data
+
+.md_configs.data
+
+.z_sync_configs.data
+
+sync_changes.log
+
+sync_hook.script
+
+**/.Archive
