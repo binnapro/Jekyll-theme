@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS3弹性盒子</title>
+
+    <meta charset="UTF-8"/>
+
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+
+    <meta name="HandheldFriendly" content="true"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+    <link href="../asset/farbox/basic.css" type="text/css" rel="stylesheet"/>
+    <link href="../asset/farbox/main.css" type="text/css" rel="stylesheet"/>
+
+    <style type="text/css">
+        
+            span.md_line{margin-bottom:0.5em; display:block; line-height:1.89}
+            .md_line br{ display: none;}
+            
+    </style>
+
+    <script>
+        var flowchat_options = {
+            'x': 0, 'y': 0, 'line-width': 1, 'line-length': 50, 'text-margin': 10, 'font-size': 13,
+            'font-color': '#3c3c3c', 'line-color': '#666666', 'element-color': '#666666', 'fill': 'transparent',
+            'yes-text': 'yes', 'no-text': 'no', 'arrow-end': 'block', 'class': 'flowchart', 'scale': 1,
+            'symbols': { 'start': {}, 'end': {}, 'condition': {}, 'inputoutput': {}, 'operation': {}, 'subroutine': {}}
+        }
+    </script>
+    <script type="text/javascript" src="../asset/other/raphael-min.js"></script>
+    <script type="text/javascript" src="../asset/other/flowchart.js"></script>
+    <script type="text/javascript" src="../asset/other/echarts.min.js"></script>
+
+
+</head>
+
+<body>
+    
+        <a href="../index.html" id="go_to_home"> &lt; home </a>
+    
+    <div id="sidebar">
+        <ul id="sidebar_body">
+        
+            
+            
+            
+            
+
+            
+                
+                <li class="level_1 directory not_valid_directory">
+                    <a href="#" class="">_posts</a>
+                </li>
+            
+
+            
+            <ul>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-07-09-js-ganerates-random-number.html" class="">JS生成不重复随机数的方法</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-07-29-Pseudo-class-element.html" class="">关于伪类元素:before和:after</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-10-06-build-ghost.html" class="">搭建Ghost平台的博客</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-10-25-markdown-grammar.html" class="">Markdown grammar</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-10-31-build-svn-git-server.html" class="">GIT及SVN服务器搭建</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-11-08-vertical-align.html" class="">对vertical-align的一些认识</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-11-20-CSS3-flex.html" class="selected">CSS3弹性盒子</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-11-29-formatting-contexts.html" class="">格式上下文</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2017-04-10-markeditor-test.html" class="">测试markeditor的功能</a>
+                </li>
+                
+            </ul>
+            
+        
+        </ul>
+    </div>
+
+    <div id="main">
+        <div class="content_body">
+            <h1 class="title"> CSS3弹性盒子 </h1>
+            <div class="doc_post"> <p class="md_block md_has_block_below md_has_block_below_ol">
+    <span class="md_line">第一次接触css3弹性盒子时，记得是<code>display:flex</code>，后来看一些css代码的时候，看到<code>display:box</code>的形式，整理发现是css3弹性盒子的不同版本。</span>
+</p>
+
+
+<ol>
+<li>2009version: display:box;</li>
+<li>2011version: display:flexbox;</li>
+<li>2012version: display:flex/inline-flex;</li>
+<li>2014version: 添加了z-index属性;</li>
+</ol>
+
+<h3 id="toc_0">浏览器兼容性</h3>
+
+<ul>
+<li>IE10部分支持2012版本，形式<code>display:-ms-flexbox</code></li>
+<li>Android4.1/4.2-4.3部分支持2009，需要前缀<code>-webkit</code></li>
+<li>Safari7/7.1/8部分支持2012，需要前缀<code>-webkit</code></li>
+<li>IOS Safari7.0-7.1/8.1-8.3部分支持2012，需要前缀<code>-webkit</code></li>
+</ul>
+
+<p class="md_block">
+    <span class="md_line">所以我们既需要考虑新版本，又需要考虑旧版本。。。</span>
+</p>
+
+
+<h3 id="toc_1">2009版本display:box</h3>
+
+<h4 id="toc_2">容器属性</h4>
+
+<ol>
+<li>
+<p class="md_block">
+    <span class="md_line"><code>box-orient</code>用来确定子元素的方向。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">使用方法<code>box-orient:horizontal | inline-axis | vertical | block-axis | inherit</code>，其中horizontal和inline-axis都是使子元素横排，vertical和block-axis都是使子元素竖排。</span>
+</p></li>
+<li>
+<p class="md_block">
+    <span class="md_line"><code>box-direciton</code>用来确定子元素排列的顺序。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">使用方法<code>box-direction:normal | reverse | inheirt</code>，其中normal是从左到右排列，reverse是反转，如果原来的顺序是123，反转之后就是321。</span>
+</p></li>
+<li>
+<p class="md_block">
+    <span class="md_line"><code>box-lines</code>用来使子元素换行。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">使用方法<code>box-lines:single |multiple</code>，其中single就是单行，multiple是多行，但是multiple的兼容性不太好，添加之后浏览器响应。</span>
+</p></li>
+<li>
+<p class="md_block">
+    <span class="md_line"><code>box-pack</code>用来确定水平方向的子元素的对齐方式。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">使用方法<code>box-pack:start | end | center | justify</code>，其中start和end分别是对齐起点和对齐终点，之所以不用left和right是因为<code>box-direction</code>能反转元素顺序，反转之后的子元素语义不合。center是居中，justify是两端对齐，等分父元素。</span>
+</p></li>
+<li>
+<p class="md_block">
+    <span class="md_line"><code>box-align</code>用来确定垂直方向的子元素的对齐方式。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">使用方法<code>box-align:start | end | center | baseline | stretch</code>，start是最齐起点，end是对齐终点，center是居中，baseline是基线的意思，是使子元素的第一排文字以基线对齐。stretch是让子元素填充慢父元素的高度。</span>
+</p></li>
+</ol>
+
+<table>
+<thead>
+<tr>
+<th>容器属性</th>
+<th>属性作用</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>box-orient</td>
+<td>用来确定子元素的方向（横排还是竖排）</td>
+</tr>
+<tr>
+<td>box-direction</td>
+<td>用来确定子元素的排列顺序</td>
+</tr>
+<tr>
+<td>box-lines</td>
+<td>用来 使子元素换行</td>
+</tr>
+<tr>
+<td>box-pack</td>
+<td>用来确定水平方向的子元素的对齐方式</td>
+</tr>
+<tr>
+<td>box-align</td>
+<td>用来确定垂直方向的子元素的对齐方式</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="toc_3">子元素属性</h4>
+
+<p class="md_block md_has_block_below md_has_block_below_ol">
+    <span class="md_line">给容器设置了弹性盒子的属性之后，子元素的<code>float</code> <code>clear</code> <code>vertical-align</code>都会无效的，但是弹性盒子为我们的子元素设置新的属性名称来定位子元素。</span>
+</p>
+
+
+<ol>
+<li>
+<p class="md_block">
+    <span class="md_line"><code>box-flex</code>用来等分元素，标识子元素占有的份数。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">如果只有两个子元素，分别给两个子元素设置了<code>box-flex:1</code>，那么这两个子元素平分父元素；如果一个子元素是<code>box-flex:1</code>，一个子元素是<code>box-flex:2</code>，那么一个子元素占有父元素的1/3，另外一个子元素占父元素的2/3。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">如果有三个子元素，其中一个子元素设置了<code>width:50px</code>，另外两个元素设置了<code>box-flex</code>属性，这两个元素将按比例分割剩余的空间。</span>
+</p></li>
+<li>
+<p class="md_block">
+    <span class="md_line"><code>box-ordinal-group</code>用来给子元素编号，编号越小越靠前，可更改元素的顺序。</span>
+</p></li>
+</ol>
+
+<h3 id="toc_4">2012版本display:flex</h3>
+
+<h4 id="toc_5">容器属性</h4>
+
+<ol>
+<li>
+<p class="md_block">
+    <span class="md_line"><code>flex-direction</code>用来确定子元素排列的顺序和方向。</span>
+</p>
+
+
+<p class="md_block md_has_block_below md_has_block_below_img">
+    <span class="md_line">使用方法<code>flex-direction:row | row-reverse | column | column-reverse</code>，默认是row。通过名称就能知道他们的用处，相比09版本更加的简单易懂。row和column分别是横排和竖排。row-reverse也是使子元素水平方向的排列，但是起点是右端；column-reverse也是使子元素在垂直方向上排列，但是起点是下沿。</span>
+</p>
+
+<img class="" src="https://ofw1nwn63.qnssl.com/flex/row-reverse.png" alt="row-reverse" title="" ></li>
+<li>
+<p class="md_block">
+    <span class="md_line"><code>flex-wrap</code>用来使子元素换行。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">使用方法<code>flex-wrap:nowrap | wrap | wrap-reverse</code>，默认是nowrap，不换行。wrap是换行，第一行在上面；wrap-reverse也是换行，第一行在下面。</span>
+</p></li>
+<li>
+<p class="md_block">
+    <span class="md_line"><code>flex-flow</code>是<code>flex-direction</code>和<code>flex-wrap</code>的简写形式。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">使用方法<code>flex-flow:&lt;flex-direction&gt; || &lt;flex-wrap&gt;</code>，如<code>flex-flow:row</code></span>
+</p></li>
+<li>
+<p class="md_block">
+    <span class="md_line"><code>justify-content</code>用来确定水平方向的子元素的对齐方式。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">使用方法<code>justify-content:flex-start | flex-end | center | space-between | space-around</code>。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">flex-start: 默认样式，对齐起点，由于flex-direction有reverse的属性，所以不用left。flex-end: 对齐终点。center: 居中。space-between: 两端对齐，项目间间隔都相等。space-around: 每个项目两端的间隔相等，所以项目之间的间隔比项目与边框的间距大一倍。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">接下来测试一下flex-start,设置容器元素从右到左排序，然后设置对齐方式。</span>
+</p>
+
+<div class="codehilite code_lang_css  highlight"><pre><span></span><span class="nt">flex-direction</span><span class="nd">:row-reverse</span><span class="o">;</span>
+<span class="nt">justify-content</span><span class="nd">:flex-start</span><span class="o">;</span>
+</pre></div>
+
+<!--block_code_end--><img class="" src="https://ofw1nwn63.qnssl.com/flex/row-reverse.png" alt="row-reverse" title="" >
+<p class="md_block">
+    <span class="md_line">这说明flex-start不是左对齐，而是以起点对齐的。</span>
+</p></li>
+<li>
+<p class="md_block">
+    <span class="md_line"><code>align-items</code>用来确定垂直方向的子元素的对齐方式。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">使用方法<code>align-items:flex-start | flex-end | center | baseline | stretch</code>，默认是stretch，如果子元素没有设置高度或者设为auto，那么子元素会占满整个容器的高度。flex-start是对齐起点，flex-end是对齐终点，center是居中，baseline是基线，使子元素以自身第一行文字的基线对齐。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">举个栗子：我们通过修改子元素的font-size或者是line-height可以改变文字基线（基线就是英文4线格的第三行）的位置，然后给容器添加，就会按照基线对齐了。</span>
+</p>
+
+<div class="codehilite code_lang_css  highlight"><pre><span></span><span class="nt">align-items</span><span class="nd">:baseline</span><span class="o">;</span>
+</pre></div>
+
+<!--block_code_end--><img class="" src="https://ofw1nwn63.qnssl.com/flex/align-items-baseline.png" alt="align-items-baseline" title="" ></li>
+<li>
+<p class="md_block">
+    <span class="md_line"><code>align-content</code>多根轴线的对齐方式，如果项目中只有一根轴线不起作用。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">使用方法<code>align-content:flex-start| flex-end| center| space-between| space-around| stretch</code>，属性作用同上。</span>
+</p></li>
+</ol>
+
+<table>
+<thead>
+<tr>
+<th>容器属性</th>
+<th>属性作用</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>flex-direction</td>
+<td>子元素排列方向，可控制子元素排列的起点位置</td>
+</tr>
+<tr>
+<td>flex-wrap</td>
+<td>控制子元素换行</td>
+</tr>
+<tr>
+<td>flex-flow</td>
+<td>是flex-direction和flex-wrap的简写形式</td>
+</tr>
+<tr>
+<td>justify-content</td>
+<td>子元素的水平对齐方式</td>
+</tr>
+<tr>
+<td>align-items</td>
+<td>子元素的垂直对齐方式</td>
+</tr>
+<tr>
+<td>align-content</td>
+<td>当有多根轴线的时候，子元素多排的时候，控制子元素的垂直对齐方式</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="toc_6">子元素属性</h4>
+
+<p class="md_block md_has_block_below md_has_block_below_ol">
+    <span class="md_line">和09版本一样，浮动等属性都不能用了，但是弹性盒子也有相应的属性提供。</span>
+</p>
+
+
+<ol>
+<li><code>flex-grow:&lt;number&gt;;</code>默认是0，这是子元素的放大倍数，容器存在剩余空间的时候，才会生效，放大原有比例的该属性指定倍数。</li>
+<li><code>flex-shrink:&lt;number&gt;;</code>默认是1，这是子元素的缩小倍数，即空间不足的时候，缩小子元素的大小。容器有个flex-wrap的属性，默认情况下式nowarp，就是不换行，不换行可能导致同行排列的元素空间不够，就会缩小子元素。将其设置成0，就不缩小，不可以设置成负数。</li>
+<li><code>flex-basis:&lt;length&gt; | auto;</code>默认是auto。与Height、Width一致，如果设置了350px，那么该子元素就占据固定大小的空间，不再改变。</li>
+<li><code>flex</code>是<code>flex-grow</code> <code>flex-shrink</code> <code>flex-basis</code>的简写，后两个属性可选，默认情况下是0 1 auto。这里有两个默认值，分别是<strong>auto(1 1 auto)</strong> <strong>none(0 0 auto)</strong>。</li>
+<li><code>order:&lt;integer&gt;;</code>给子元素编号，编好越小，顺序越靠前，默认是0。</li>
+<li><code>align-self:auto | flex-start | flex-end | center | baseline | stretch</code>默认是auto，没有父元素的时候等于stretch。这个属性是给某个子元素设置的，给某个子元素设置了该属性值，就可以覆盖原来的align-items的属性值。</li>
+</ol>
+
+<table>
+<thead>
+<tr>
+<th>子元素属性</th>
+<th>属性作用</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>flex-grow</td>
+<td>子元素放大倍数，当容器有剩余空间的时候按倍数放大</td>
+</tr>
+<tr>
+<td>flex-shrink</td>
+<td>子元素缩小倍数，空间不足时缩小</td>
+</tr>
+<tr>
+<td>flex-basis</td>
+<td>设置固定大小，相当于width、height</td>
+</tr>
+<tr>
+<td>flex</td>
+<td>flex-grow、flex-shrink和flex-basis的简写，取值auto(1 1 auto)、none(0 0 auto)</td>
+</tr>
+<tr>
+<td>order</td>
+<td>给子元素编号，编号越小，排列顺序越靠前</td>
+</tr>
+<tr>
+<td>align-self</td>
+<td>为某个子元素设置单独的垂直排列属性，可覆盖已设置的align-items</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_7">比较2012版的align-items和align-content</h3>
+
+<p class="md_block">
+    <span class="md_line">设置合适的宽度，让子元素能换行。</span>
+</p>
+
+<div class="codehilite code_lang_html  highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Document<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">&gt;</span>
+    <span class="o">*</span><span class="p">{</span>
+    <span class="nb">padding</span><span class="o">:</span><span class="m">0</span><span class="p">;</span>
+    <span class="nb">margin</span><span class="o">:</span><span class="m">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nt">body</span><span class="p">{</span>
+    <span class="nb">padding</span><span class="o">:</span><span class="m">50px</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;box&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span><span class="p">&gt;</span>3<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span><span class="p">&gt;</span>4<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span><span class="p">&gt;</span>5<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span><span class="p">&gt;</span>6<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span><span class="p">&gt;</span>7<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span><span class="p">&gt;</span>8<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span><span class="p">&gt;</span>9<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+
+<!--block_code_end--><div class="codehilite code_lang_css  highlight"><pre><span></span><span class="nc">.box</span><span class="p">{</span>
+    <span class="nb">display</span><span class="o">:</span><span class="n">flex</span><span class="p">;</span>
+    <span class="nb">width</span><span class="o">:</span><span class="m">100px</span><span class="p">;</span>
+    <span class="nb">background</span><span class="o">:</span><span class="nb">yellow</span><span class="p">;</span>
+    <span class="nb">height</span><span class="o">:</span><span class="m">200px</span><span class="p">;</span>
+    <span class="n">flex</span><span class="o">-</span><span class="nb">direction</span><span class="o">:</span><span class="n">row</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.item</span><span class="p">{</span>
+    <span class="nb">background</span><span class="o">:</span><span class="nb">blue</span><span class="p">;</span>
+    <span class="nb">margin-right</span><span class="o">:</span><span class="m">5px</span><span class="p">;</span>
+    <span class="nb">margin-bottom</span><span class="o">:</span><span class="m">5px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">然后给父亲容器添加属性</span>
+</p>
+
+<div class="codehilite code_lang_css  highlight"><pre><span></span><span class="nt">align-items</span><span class="nd">:center</span><span class="o">;</span>
+</pre></div>
+
+<!--block_code_end--><img class="" src="https://ofw1nwn63.qnssl.com/flex/align-items.png" alt="align-items" title="" >
+<p class="md_block">
+    <span class="md_line">修改align-items</span>
+</p>
+
+<div class="codehilite code_lang_css  highlight"><pre><span></span><span class="nt">align-content</span><span class="nd">:center</span><span class="o">;</span>
+</pre></div>
+
+<!--block_code_end--><img class="" src="https://ofw1nwn63.qnssl.com/flex/align-content.png" alt="align-content" title="" >
+<h3 id="toc_8">考虑兼容的使用</h3>
+
+<p class="md_block">
+    <span class="md_line">之所以将老板和新版本的弹性盒子的属性都罗列了一遍，是为了考虑旧的浏览器，以下是考虑兼容性的写法。</span>
+</p>
+
+
+<h4 id="toc_9">父元素容器声明方式</h4>
+
+<p class="md_block">
+    <span class="md_line">为父元素设置了以下属性，子元素属性才会生效。</span>
+</p>
+
+<div class="codehilite code_lang_css  highlight"><pre><span></span><span class="nt">display</span><span class="o">:</span> <span class="nt">box</span><span class="o">;</span>              <span class="c">/* OLD - Android 4.4- */</span>
+<span class="nt">display</span><span class="o">:</span> <span class="nt">-webkit-box</span><span class="o">;</span>      <span class="c">/* OLD - iOS 6-, Safari 3.1-6 */</span>
+<span class="nt">display</span><span class="o">:</span> <span class="nt">-moz-box</span><span class="o">;</span>         <span class="c">/* OLD - Firefox 19- (buggy but mostly works) */</span>
+<span class="nt">display</span><span class="o">:</span> <span class="nt">-ms-flexbox</span><span class="o">;</span>      <span class="c">/* TWEENER - IE 10 */</span>
+<span class="nt">display</span><span class="o">:</span> <span class="nt">-webkit-flex</span><span class="o">;</span>     <span class="c">/* NEW - Chrome */</span>
+<span class="nt">display</span><span class="o">:</span> <span class="nt">flex</span><span class="o">;</span>             <span class="c">/* NEW, Spec - Opera 12.1, Firefox 20+ */</span>
+</pre></div>
+
+<!--block_code_end-->
+<h4 id="toc_10">父元素-横向排列</h4>
+<div class="codehilite code_lang_css  highlight"><pre><span></span><span class="nt">display</span><span class="o">:</span> <span class="nt">box</span><span class="o">;</span>              <span class="c">/* OLD - Android 4.4- */</span>
+<span class="nt">display</span><span class="o">:</span> <span class="nt">-webkit-box</span><span class="o">;</span>      <span class="c">/* OLD - iOS 6-, Safari 3.1-6 */</span>
+<span class="nt">display</span><span class="o">:</span> <span class="nt">-moz-box</span><span class="o">;</span>         <span class="c">/* OLD - Firefox 19- (buggy but mostly works) */</span>
+<span class="nt">display</span><span class="o">:</span> <span class="nt">-ms-flexbox</span><span class="o">;</span>      <span class="c">/* TWEENER - IE 10 */</span>
+<span class="nt">display</span><span class="o">:</span> <span class="nt">-webkit-flex</span><span class="o">;</span>     <span class="c">/* NEW - Chrome */</span>
+<span class="nt">display</span><span class="o">:</span> <span class="nt">flex</span><span class="o">;</span>             <span class="c">/* NEW, Spec - Opera 12.1, Firefox 20+ */</span>
+
+<span class="c">/* 09版 */</span>
+<span class="nt">-webkit-box-orient</span><span class="o">:</span> <span class="nt">horizontal</span><span class="o">;</span>
+<span class="c">/* 12版 */</span>
+<span class="nt">-webkit-flex-direction</span><span class="o">:</span> <span class="nt">row</span><span class="o">;</span>
+<span class="nt">-moz-flex-direction</span><span class="o">:</span> <span class="nt">row</span><span class="o">;</span>
+<span class="nt">-ms-flex-direction</span><span class="o">:</span> <span class="nt">row</span><span class="o">;</span>
+<span class="nt">-o-flex-direction</span><span class="o">:</span> <span class="nt">row</span><span class="o">;</span>
+<span class="nt">flex-direction</span><span class="o">:</span> <span class="nt">row</span><span class="o">;</span>
+</pre></div>
+
+<!--block_code_end-->
+<h4 id="toc_11">父元素-横向换行</h4>
+<div class="codehilite code_lang_css  highlight"><pre><span></span><span class="c">/* 09版,虽然有这个属性，但是不知道为什么，浏览器就是没有响应*/</span>
+<span class="c">/*-webkit-box-lines: multiple;*/</span>
+<span class="c">/* 12版 */</span>
+<span class="nt">-webkit-flex-wrap</span><span class="o">:</span> <span class="nt">wrap</span><span class="o">;</span>
+<span class="nt">-moz-flex-wrap</span><span class="o">:</span> <span class="nt">wrap</span><span class="o">;</span>
+<span class="nt">-ms-flex-wrap</span><span class="o">:</span> <span class="nt">wrap</span><span class="o">;</span>
+<span class="nt">-o-flex-wrap</span><span class="o">:</span> <span class="nt">wrap</span><span class="o">;</span>
+<span class="nt">flex-wrap</span><span class="o">:</span> <span class="nt">wrap</span><span class="o">;</span>
+</pre></div>
+
+<!--block_code_end-->
+<h4 id="toc_12">父元素-水平对齐方式</h4>
+<div class="codehilite code_lang_css  highlight"><pre><span></span><span class="c">/* 09版 */</span>
+<span class="nt">-webkit-box-pack</span><span class="o">:</span> <span class="nt">center</span><span class="o">;</span>
+<span class="c">/* 12版 */</span>
+<span class="nt">-webkit-justify-content</span><span class="o">:</span> <span class="nt">center</span><span class="o">;</span>
+<span class="nt">-moz-justify-content</span><span class="o">:</span> <span class="nt">center</span><span class="o">;</span>
+<span class="nt">-ms-justify-content</span><span class="o">:</span> <span class="nt">center</span><span class="o">;</span>
+<span class="nt">-o-justify-content</span><span class="o">:</span> <span class="nt">center</span><span class="o">;</span>
+<span class="nt">justify-content</span><span class="o">:</span> <span class="nt">center</span><span class="o">;</span>
+<span class="c">/* 其它取值如下：</span>
+<span class="c">align-items     主轴原点方向对齐</span>
+<span class="c">flex-end        主轴延伸方向对齐</span>
+<span class="c">space-between   等间距排列，首尾不留白</span>
+<span class="c">space-around    等间距排列，首尾留白</span>
+<span class="c">*/</span>
+<span class="c">/*当子元素由于换行出现了多行的情况，需要修改，因为这时有多条轴线</span>
+<span class="c">align-items =&gt; align-content</span>
+<span class="c">*/</span>
+</pre></div>
+
+<!--block_code_end-->
+<h4 id="toc_13">父元素-垂直排列</h4>
+<div class="codehilite code_lang_css  highlight"><pre><span></span><span class="nt">display</span><span class="o">:</span> <span class="nt">box</span><span class="o">;</span>              <span class="c">/* OLD - Android 4.4- */</span>
+<span class="nt">display</span><span class="o">:</span> <span class="nt">-webkit-box</span><span class="o">;</span>      <span class="c">/* OLD - iOS 6-, Safari 3.1-6 */</span>
+<span class="nt">display</span><span class="o">:</span> <span class="nt">-moz-box</span><span class="o">;</span>         <span class="c">/* OLD - Firefox 19- (buggy but mostly works) */</span>
+<span class="nt">display</span><span class="o">:</span> <span class="nt">-ms-flexbox</span><span class="o">;</span>      <span class="c">/* TWEENER - IE 10 */</span>
+<span class="nt">display</span><span class="o">:</span> <span class="nt">-webkit-flex</span><span class="o">;</span>     <span class="c">/* NEW - Chrome */</span>
+<span class="nt">display</span><span class="o">:</span> <span class="nt">flex</span><span class="o">;</span>             <span class="c">/* NEW, Spec - Opera 12.1, Firefox 20+ */</span>
+
+<span class="c">/* 09版 */</span>
+<span class="nt">-webkit-box-orient</span><span class="o">:</span> <span class="nt">vertical</span><span class="o">;</span>
+<span class="c">/* 12版 */</span>
+<span class="nt">-webkit-flex-direction</span><span class="o">:</span> <span class="nt">column</span><span class="o">;</span>
+<span class="nt">-moz-flex-direction</span><span class="o">:</span> <span class="nt">column</span><span class="o">;</span>
+<span class="nt">-ms-flex-direction</span><span class="o">:</span> <span class="nt">column</span><span class="o">;</span>
+<span class="nt">-o-flex-direction</span><span class="o">:</span> <span class="nt">column</span><span class="o">;</span>
+<span class="nt">flex-direction</span><span class="o">:</span> <span class="nt">column</span><span class="o">;</span>
+</pre></div>
+
+<!--block_code_end-->
+<h4 id="toc_14">父元素-垂直居中</h4>
+<div class="codehilite code_lang_css  highlight"><pre><span></span><span class="c">/* 09版 */</span>
+<span class="nt">-webkit-box-align</span><span class="o">:</span> <span class="nt">center</span><span class="o">;</span>
+<span class="c">/* 12版 */</span>
+<span class="nt">-webkit-align-items</span><span class="o">:</span> <span class="nt">center</span><span class="o">;</span>
+<span class="nt">-moz-align-items</span><span class="o">:</span> <span class="nt">center</span><span class="o">;</span>
+<span class="nt">-ms-align-items</span><span class="o">:</span> <span class="nt">center</span><span class="o">;</span>
+<span class="nt">-o-align-items</span><span class="o">:</span> <span class="nt">center</span><span class="o">;</span>
+<span class="nt">align-items</span><span class="o">:</span> <span class="nt">center</span><span class="o">;</span>
+</pre></div>
+
+<!--block_code_end-->
+<h4 id="toc_15">子元素-平均分栏</h4>
+<div class="codehilite code_lang_css  highlight"><pre><span></span><span class="nt">-webkit-box-flex</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>      <span class="c">/* OLD - iOS 6-, Safari 3.1-6 */</span>
+<span class="nt">-moz-box-flex</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>         <span class="c">/* OLD - Firefox 19- */</span>
+<span class="nt">width</span><span class="o">:</span> <span class="nt">20</span><span class="o">%;</span>               <span class="c">/* For old syntax, otherwise collapses. */</span>
+<span class="nt">-webkit-flex</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>          <span class="c">/* Chrome */</span>
+<span class="nt">-ms-flex</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>              <span class="c">/* IE 10 */</span>
+<span class="nt">flex</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>
+</pre></div>
+
+<!--block_code_end-->
+<h4 id="toc_16">子元素-改变文档顺序</h4>
+<div class="codehilite code_lang_css  highlight"><pre><span></span><span class="nt">-webkit-box-ordinal-group</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>   <span class="c">/* OLD - iOS 6-, Safari 3.1-6 */</span>
+<span class="nt">-moz-box-ordinal-group</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>      <span class="c">/* OLD - Firefox 19- */</span>
+<span class="nt">-ms-flex-order</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>              <span class="c">/* TWEENER - IE 10 */</span>
+<span class="nt">-webkit-order</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>               <span class="c">/* NEW - Chrome */</span>
+<span class="nt">order</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>                       <span class="c">/* NEW, Spec - Opera 12.1, Firefox 20+ */</span>
+</pre></div>
+
+<!--block_code_end--> </div>
+        </div>
+
+    </div>
+
+
+
+
+
+<script>
+    // auto focus for menu
+    window.onload = function(){
+        var sidebar = document.getElementById('sidebar');
+        var current = document.getElementsByClassName('selected')[0];
+        if (current && sidebar){
+            sidebar.scrollTop = current.offsetTop - sidebar.clientHeight/2 + 100
+        }
+    };
+</script>
+
+
+
+
+</body>
+
+</html>

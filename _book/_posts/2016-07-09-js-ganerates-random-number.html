@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS生成不重复随机数的方法</title>
+
+    <meta charset="UTF-8"/>
+
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+
+    <meta name="HandheldFriendly" content="true"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+    <link href="../asset/farbox/basic.css" type="text/css" rel="stylesheet"/>
+    <link href="../asset/farbox/main.css" type="text/css" rel="stylesheet"/>
+
+    <style type="text/css">
+        
+            span.md_line{margin-bottom:0.5em; display:block; line-height:1.89}
+            .md_line br{ display: none;}
+            
+    </style>
+
+    <script>
+        var flowchat_options = {
+            'x': 0, 'y': 0, 'line-width': 1, 'line-length': 50, 'text-margin': 10, 'font-size': 13,
+            'font-color': '#3c3c3c', 'line-color': '#666666', 'element-color': '#666666', 'fill': 'transparent',
+            'yes-text': 'yes', 'no-text': 'no', 'arrow-end': 'block', 'class': 'flowchart', 'scale': 1,
+            'symbols': { 'start': {}, 'end': {}, 'condition': {}, 'inputoutput': {}, 'operation': {}, 'subroutine': {}}
+        }
+    </script>
+    <script type="text/javascript" src="../asset/other/raphael-min.js"></script>
+    <script type="text/javascript" src="../asset/other/flowchart.js"></script>
+    <script type="text/javascript" src="../asset/other/echarts.min.js"></script>
+
+
+</head>
+
+<body>
+    
+        <a href="../index.html" id="go_to_home"> &lt; home </a>
+    
+    <div id="sidebar">
+        <ul id="sidebar_body">
+        
+            
+            
+            
+            
+
+            
+                
+                <li class="level_1 directory not_valid_directory">
+                    <a href="#" class="">_posts</a>
+                </li>
+            
+
+            
+            <ul>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-07-09-js-ganerates-random-number.html" class="selected">JS生成不重复随机数的方法</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-07-29-Pseudo-class-element.html" class="">关于伪类元素:before和:after</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-10-06-build-ghost.html" class="">搭建Ghost平台的博客</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-10-25-markdown-grammar.html" class="">Markdown grammar</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-10-31-build-svn-git-server.html" class="">GIT及SVN服务器搭建</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-11-08-vertical-align.html" class="">对vertical-align的一些认识</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-11-20-CSS3-flex.html" class="">CSS3弹性盒子</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-11-29-formatting-contexts.html" class="">格式上下文</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2017-04-10-markeditor-test.html" class="">测试markeditor的功能</a>
+                </li>
+                
+            </ul>
+            
+        
+        </ul>
+    </div>
+
+    <div id="main">
+        <div class="content_body">
+            <h1 class="title"> JS生成不重复随机数的方法 </h1>
+            <div class="doc_post"> <h3 id="toc_0">说明</h3>
+
+<p class="md_block">
+    <span class="md_line">我们可以<code>Math.random()</code>的方法轻松的生成一个随机的数字，但是这个梳子可能是重复的。有时候，我们需要一个不重复的随机数，可以用很多的方法来实现这个要求，以下方法的效率是比较高的。</span>
+</p>
+
+
+<h3 id="toc_1">解释</h3>
+
+<p class="md_block">
+    <span class="md_line">不重复的随机数往往是规定范围的，我们先声明一个在这个范围之内的数组，然后用<code>sort()</code>方法来排序数组，而排序的方法是用一个随机数，由于随机数的不确定性，得到一个不重复随机数组。</span>
+</p>
+
+
+<h3 id="toc_2">代码</h3>
+<div class="codehilite code_lang_js  highlight"><pre><span></span> <span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+ <span class="c1">//原始数组</span>
+ <span class="kd">var</span> <span class="nx">original</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">;</span> 
+ <span class="c1">//给原始数组original赋值</span>
+ <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">count</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nx">original</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="kd">var</span> <span class="nx">d1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">();</span>
+ <span class="c1">//排序</span>
+ <span class="nx">original</span><span class="p">.</span><span class="nx">sort</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">();</span>
+ <span class="p">});</span>
+ <span class="c1">//输出</span>
+ <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">count</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">original</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; , &quot;</span><span class="p">);</span>
+ <span class="p">}</span>
+ <span class="kd">var</span> <span class="nx">d2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">();</span>
+ <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;&lt;br /&gt;运算耗时&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">d2</span> <span class="o">-</span> <span class="nx">d1</span><span class="p">));</span>
+</pre></div>
+
+<!--block_code_end--> </div>
+        </div>
+
+    </div>
+
+
+
+
+
+<script>
+    // auto focus for menu
+    window.onload = function(){
+        var sidebar = document.getElementById('sidebar');
+        var current = document.getElementsByClassName('selected')[0];
+        if (current && sidebar){
+            sidebar.scrollTop = current.offsetTop - sidebar.clientHeight/2 + 100
+        }
+    };
+</script>
+
+
+
+
+</body>
+
+</html>

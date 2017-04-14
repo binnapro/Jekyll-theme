@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>对vertical-align的一些认识</title>
+
+    <meta charset="UTF-8"/>
+
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+
+    <meta name="HandheldFriendly" content="true"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+    <link href="../asset/farbox/basic.css" type="text/css" rel="stylesheet"/>
+    <link href="../asset/farbox/main.css" type="text/css" rel="stylesheet"/>
+
+    <style type="text/css">
+        
+            span.md_line{margin-bottom:0.5em; display:block; line-height:1.89}
+            .md_line br{ display: none;}
+            
+    </style>
+
+    <script>
+        var flowchat_options = {
+            'x': 0, 'y': 0, 'line-width': 1, 'line-length': 50, 'text-margin': 10, 'font-size': 13,
+            'font-color': '#3c3c3c', 'line-color': '#666666', 'element-color': '#666666', 'fill': 'transparent',
+            'yes-text': 'yes', 'no-text': 'no', 'arrow-end': 'block', 'class': 'flowchart', 'scale': 1,
+            'symbols': { 'start': {}, 'end': {}, 'condition': {}, 'inputoutput': {}, 'operation': {}, 'subroutine': {}}
+        }
+    </script>
+    <script type="text/javascript" src="../asset/other/raphael-min.js"></script>
+    <script type="text/javascript" src="../asset/other/flowchart.js"></script>
+    <script type="text/javascript" src="../asset/other/echarts.min.js"></script>
+
+
+</head>
+
+<body>
+    
+        <a href="../index.html" id="go_to_home"> &lt; home </a>
+    
+    <div id="sidebar">
+        <ul id="sidebar_body">
+        
+            
+            
+            
+            
+
+            
+                
+                <li class="level_1 directory not_valid_directory">
+                    <a href="#" class="">_posts</a>
+                </li>
+            
+
+            
+            <ul>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-07-09-js-ganerates-random-number.html" class="">JS生成不重复随机数的方法</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-07-29-Pseudo-class-element.html" class="">关于伪类元素:before和:after</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-10-06-build-ghost.html" class="">搭建Ghost平台的博客</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-10-25-markdown-grammar.html" class="">Markdown grammar</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-10-31-build-svn-git-server.html" class="">GIT及SVN服务器搭建</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-11-08-vertical-align.html" class="selected">对vertical-align的一些认识</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-11-20-CSS3-flex.html" class="">CSS3弹性盒子</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-11-29-formatting-contexts.html" class="">格式上下文</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2017-04-10-markeditor-test.html" class="">测试markeditor的功能</a>
+                </li>
+                
+            </ul>
+            
+        
+        </ul>
+    </div>
+
+    <div id="main">
+        <div class="content_body">
+            <h1 class="title"> 对vertical-align的一些认识 </h1>
+            <div class="doc_post"> <h3 id="toc_0">说明</h3>
+
+<p class="md_block">
+    <span class="md_line">在文字和图片同行排版的时候，会发现img图片和文字不能对齐（图片下面有个空行）；或者把一张图片放在一个a标签里面，也会看到图片下面有个空行。尴尬尴尬……</span>
+</p>
+
+
+<h3 id="toc_1">解释</h3>
+
+<p class="md_block md_has_block_below md_has_block_below_img">
+    <span class="md_line">要理解这个问题，首先要弄明白CSS对于<code>display:inline-block</code>的<code>vertical-align</code>属性各个值的含义。它的默认值是<code>baseline</code>，但这是西文才有的概念。看下面的一张图。</span>
+</p>
+
+<img src="https://ofw1nwn63.qnssl.com/vertical-align/abc.jpeg" width="300px">
+<p class="md_block">
+    <span class="md_line">刚开始学英文的时候都是用4线格的。上面说到的<code>baseline</code>（基线）是4线格的第三条。可以看到，出现在<code>baseline</code>下面的是p啊，q啊，g啊，y啊，这些字母的下面那个尾巴。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">而<code>vertical-align</code>有另外两个常见的值<code>top</code> <code>bottom</code>，它们就是4线格的第一条线和第四条线。所以你给一个元素设置上述值就会让该元素和文字的相应位置对齐了。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">可以看到，<code>baseline</code>和<code>bottom</code>之间有一定的距离。实际上，<code>inlin-block</code>的图片下面的那个空格就是正式<code>baseline</code> <code>bottom</code>之间的距离。即使只有图片没有文字，这个间距也是存在的。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">另外，top和bottom之间的值即为<code>line-height</code>，假如把<code>line-height</code>设置为0，那么<code>baseline</code>和<code>bottom</code>之间的距离也变为0，img下面的空格也就消失了。如果没有设置<code>line-height</code>，<code>line-height</code>的默认是基于<code>font-size</code>的，一般是字体大小的一个比例(比如1.2)。当然也可以把字体大小设置为0，那么在没有设置行号的情况下，行高也是0，也就没有那个空行了。</span>
+</p>
+
+
+<h3 id="toc_2">vertical-align的取值</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">值</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">baseline</td>
+<td style="text-align: left">默认。元素的基线与父元素的基线对齐。</td>
+</tr>
+<tr>
+<td style="text-align: left">sub</td>
+<td style="text-align: left">降低元素的基线到父元素合适的下标位置</td>
+</tr>
+<tr>
+<td style="text-align: left">super</td>
+<td style="text-align: left">升高元素的基线到父元素合适的上标位置</td>
+</tr>
+<tr>
+<td style="text-align: left">top</td>
+<td style="text-align: left">把对齐的子元素的顶端与line box 顶端对齐</td>
+</tr>
+<tr>
+<td style="text-align: left">text-top</td>
+<td style="text-align: left">把元素顶端与父元素内容区域的顶端对齐</td>
+</tr>
+<tr>
+<td style="text-align: left">bottom</td>
+<td style="text-align: left">把对齐的子元素的底端与line box底端对齐</td>
+</tr>
+<tr>
+<td style="text-align: left">text-bottom</td>
+<td style="text-align: left">把元素底端与父元素内容区域的底端对齐</td>
+</tr>
+<tr>
+<td style="text-align: left">inherit</td>
+<td style="text-align: left">继承父元素的vertical-align</td>
+</tr>
+<tr>
+<td style="text-align: left">2px | -2px | -2% | 2%</td>
+<td style="text-align: left">相对于基线位移，微调。其中百分数值是相对与line-height的</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_3">vertical-align适用范围</h3>
+
+<p class="md_block">
+    <span class="md_line">只有一个元素属于inline或是inline-block，那么vertical-align才会生效。所以</span>
+</p>
+
+<div class="codehilite code_lang_css  highlight"><pre><span></span><span class="nt">div</span><span class="p">{</span>
+  <span class="nb">vertical-align</span><span class="o">:</span><span class="nb">middle</span>
+<span class="p">}</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">是不能生效的。所谓的inline-block元素是可以和水平元素混排，但是又能设置高宽等属性的元素（比如：图片、按钮、单选、复选、单行文本框、多行文本框）。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line"><strong>注意：</strong>只有inline-block的元素才会对vertical-align起作用。虽然inline的元素也会因为因此改变位置，这是因为vertical-align导致基线位置改变，所以inline元素位置改变了。</span>
+</p>
+
+
+<h3 id="toc_4">example</h3>
+
+<p class="md_block">
+    <span class="md_line">测试代码</span>
+</p>
+
+<div class="codehilite code_lang_html  highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Document<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">&gt;</span>
+        <span class="nt">body</span><span class="p">{</span>
+            <span class="nb">font-size</span><span class="o">:</span><span class="m">50px</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nc">.buhao</span><span class="p">{</span>
+            <span class="nb">background</span><span class="o">:</span><span class="nb">green</span><span class="p">;</span>
+            <span class="nb">line-height</span><span class="o">:</span><span class="m">100px</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nt">img</span><span class="p">{</span>
+            <span class="nb">vertical-align</span><span class="o">:</span><span class="nb">bottom</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nc">.nihao</span><span class="p">{</span>
+            <span class="nb">border</span><span class="o">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="nb">black</span><span class="p">;</span>
+            <span class="nb">position</span><span class="o">:</span><span class="nb">absolute</span><span class="p">;</span>
+            <span class="nb">top</span><span class="o">:</span><span class="m">10px</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;buhao&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://ofsjy8rwf.qnssl.com/1.jpg&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;50px&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>你好
+    bpiayNPq<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;nihao&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block md_has_block_below md_has_block_below_img">
+    <span class="md_line">首先水平排列一张图片和一些中文字和英文字母。可以看到图片和文字并不能对齐，图片明显高于文字。这下面的间距就是4格线的第三条线和第四条线之间的距离(baseline)。</span>
+</p>
+
+<img src="https://ofw1nwn63.qnssl.com/vertical-align/1.png" width="350px">
+<p class="md_block md_has_block_below md_has_block_below_img">
+    <span class="md_line">给图片添加属性<code>vertical-align:bottom</code>(图片是inline-block元素)。可以看到图片和文字最下面对齐。中文有点小瑕疵。</span>
+</p>
+
+<img src="https://ofw1nwn63.qnssl.com/vertical-align/2.png" width="350px">
+<p class="md_block md_has_block_below md_has_block_below_img">
+    <span class="md_line">同时给图片和字体添加属性<code>vertical-align:middle</code>就能让图片和中文字体对齐。</span>
+</p>
+
+<img src="https://ofw1nwn63.qnssl.com/vertical-align/3.png" width="350px">
+<p class="md_block md_has_block_below md_has_block_below_img">
+    <span class="md_line">给图片添加属性<code>vertical-align:top</code>就能图片对齐line-box的顶端(并不是文字部分的最高处)。</span>
+</p>
+
+<img src="https://ofw1nwn63.qnssl.com/vertical-align/4.png" width="350px">
+<p class="md_block">
+    <span class="md_line">那么<code>top</code> <code>text-top</code>以及<code>bottom</code> <code>text-bottom</code>有什么区别呢？如果你在上面的基础上直接设置这两个值，你会发现，没有任何变化，这只是运气好而已，因为我们没有设置<code>line-height</code>属性。</span>
+</p>
+
+
+<p class="md_block md_has_block_below md_has_block_below_img">
+    <span class="md_line">给文字设置行号，这里的文字大小是<code>50px</code>，设置行高<code>100px</code>，然后给图片添加<code>vertical-align:top</code>，效果如下:</span>
+</p>
+
+<img src="https://ofw1nwn63.qnssl.com/vertical-align/5.png" width="350px">
+<p class="md_block md_has_block_below md_has_block_below_img">
+    <span class="md_line">然后修改图片属性为<code>vertical-align:text-top</code>，效果如下:</span>
+</p>
+
+<img src="https://ofw1nwn63.qnssl.com/vertical-align/6.png" width="350px"> </div>
+        </div>
+
+    </div>
+
+
+
+
+
+<script>
+    // auto focus for menu
+    window.onload = function(){
+        var sidebar = document.getElementById('sidebar');
+        var current = document.getElementsByClassName('selected')[0];
+        if (current && sidebar){
+            sidebar.scrollTop = current.offsetTop - sidebar.clientHeight/2 + 100
+        }
+    };
+</script>
+
+
+
+
+</body>
+
+</html>

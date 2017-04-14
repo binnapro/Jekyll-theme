@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>关于伪类元素:before和:after</title>
+
+    <meta charset="UTF-8"/>
+
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+
+    <meta name="HandheldFriendly" content="true"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+    <link href="../asset/farbox/basic.css" type="text/css" rel="stylesheet"/>
+    <link href="../asset/farbox/main.css" type="text/css" rel="stylesheet"/>
+
+    <style type="text/css">
+        
+            span.md_line{margin-bottom:0.5em; display:block; line-height:1.89}
+            .md_line br{ display: none;}
+            
+    </style>
+
+    <script>
+        var flowchat_options = {
+            'x': 0, 'y': 0, 'line-width': 1, 'line-length': 50, 'text-margin': 10, 'font-size': 13,
+            'font-color': '#3c3c3c', 'line-color': '#666666', 'element-color': '#666666', 'fill': 'transparent',
+            'yes-text': 'yes', 'no-text': 'no', 'arrow-end': 'block', 'class': 'flowchart', 'scale': 1,
+            'symbols': { 'start': {}, 'end': {}, 'condition': {}, 'inputoutput': {}, 'operation': {}, 'subroutine': {}}
+        }
+    </script>
+    <script type="text/javascript" src="../asset/other/raphael-min.js"></script>
+    <script type="text/javascript" src="../asset/other/flowchart.js"></script>
+    <script type="text/javascript" src="../asset/other/echarts.min.js"></script>
+
+
+</head>
+
+<body>
+    
+        <a href="../index.html" id="go_to_home"> &lt; home </a>
+    
+    <div id="sidebar">
+        <ul id="sidebar_body">
+        
+            
+            
+            
+            
+
+            
+                
+                <li class="level_1 directory not_valid_directory">
+                    <a href="#" class="">_posts</a>
+                </li>
+            
+
+            
+            <ul>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-07-09-js-ganerates-random-number.html" class="">JS生成不重复随机数的方法</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-07-29-Pseudo-class-element.html" class="selected">关于伪类元素:before和:after</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-10-06-build-ghost.html" class="">搭建Ghost平台的博客</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-10-25-markdown-grammar.html" class="">Markdown grammar</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-10-31-build-svn-git-server.html" class="">GIT及SVN服务器搭建</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-11-08-vertical-align.html" class="">对vertical-align的一些认识</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-11-20-CSS3-flex.html" class="">CSS3弹性盒子</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-11-29-formatting-contexts.html" class="">格式上下文</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2017-04-10-markeditor-test.html" class="">测试markeditor的功能</a>
+                </li>
+                
+            </ul>
+            
+        
+        </ul>
+    </div>
+
+    <div id="main">
+        <div class="content_body">
+            <h1 class="title"> 关于伪类元素:before和:after </h1>
+            <div class="doc_post"> <p class="md_block">
+    <span class="md_line">在css3中为了区分伪类元素和伪元素，把伪类元素用双冒号标识，即<code>::befeore</code>和<code>::after</code>。但是IE8只支持单冒号的用法。</span>
+</p>
+
+
+<h3 id="toc_0">基本用法</h3>
+
+<p class="md_block">
+    <span class="md_line"><code>:before</code>和<code>:after</code>的作用就是在指定的元素内容（而不是元素本身）之前或者之后插入一个包含<code>content</code>属性指定内容的行内元素，最基本的用法如下：</span>
+</p>
+
+<div class="codehilite code_lang_html  highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>example<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;example&quot;</span><span class="p">&gt;</span>Hello World!<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</pre></div>
+
+<!--block_code_end--><div class="codehilite code_lang_css  highlight"><pre><span></span><span class="nn">#example</span><span class="nd">:before</span><span class="p">{</span>
+    <span class="nb">content</span><span class="o">:</span><span class="s2">&quot;#&quot;</span><span class="p">;</span>
+    <span class="nb">color</span><span class="o">:</span><span class="nb">red</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nn">#example</span><span class="nd">:after</span><span class="p">{</span>
+    <span class="nb">content</span><span class="o">:</span><span class="s2">&quot;$&quot;</span><span class="p">;</span>
+    <span class="nb">color</span><span class="o">:</span><span class="nb">green</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">这段代码会在<code>#example</code>元素内容之前插入一个<strong>#</strong>，以及在内容之后插入一个<strong>$</strong>，插入的元素作为example的子元素，效果如下：</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">#Hello World!$</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">需要注意的是如果没有content属性，伪类元素将没有任何作用。但是可以指定为空，同样如前面所说，插入的内容是一个行内元素，并且在Html源码中无法看到，这就是为什么称之为伪类元素的理由，所以也就无法通过DOM对其进行操作。</span>
+</p>
+
+<div class="codehilite code_lang_css  highlight"><pre><span></span><span class="nn">#example</span><span class="nd">:before</span><span class="p">{</span>
+    <span class="nb">content</span><span class="o">:</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+    <span class="nb">display</span><span class="o">:</span><span class="nb">block</span><span class="p">;</span>
+    <span class="nb">width</span><span class="o">:</span><span class="m">100px</span><span class="p">;</span>
+    <span class="nb">height</span><span class="o">:</span><span class="m">100px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">伪类元素也会像其他子元素一样正常继承父元素的一些css属性，比如字体等。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">除了插入文字内容，还可以指定其他内容：</span>
+</p>
+
+<div class="codehilite code_lang_css  highlight"><pre><span></span><span class="nt">p</span><span class="nd">:before</span><span class="p">{</span>
+    <span class="nb">content</span><span class="o">:</span><span class="sx">url(&#39;img.jpg&#39;)</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">a</span><span class="nd">:after</span><span class="p">{</span>
+    <span class="nb">content</span><span class="o">:</span><span class="n">attr</span><span class="p">(</span><span class="n">href</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line"><code>attr()</code>函数会返回指定元素对应属性的值。</span>
+</p>
+
+
+<h3 id="toc_1">css绘制小三角</h3>
+
+<p class="md_block">
+    <span class="md_line">以下方法可以创建一个三角形</span>
+</p>
+
+<div class="codehilite code_lang_css  highlight"><pre><span></span><span class="nc">.triangle</span><span class="p">{</span>
+    <span class="nb">width</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nb">height</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nb">border</span><span class="o">:</span><span class="m">50px</span> <span class="nb">transparent</span> <span class="nb">solid</span><span class="p">;</span><span class="c">/*transparent表示边框颜色是透明的*/</span>
+    <span class="nb">border-top-color</span><span class="o">:</span> <span class="nb">black</span><span class="p">;</span>  <span class="c">/*这里我们仅将上边框的颜色设置为黑色*/</span>
+    <span class="c">/*border-bottom-color: black; /*这里设置底部边框色为黑色*/</span>
+    <span class="c">/*border-left-color: black;  /*这里设置左边边框色为黑色*/</span>
+    <span class="c">/*border-right-color:black; /*这里设置右边边框色为黑色*/</span>
+<span class="p">}</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block md_has_block_below md_has_block_below_img">
+    <span class="md_line">网页截图如下，设置的边框线可以得到不同方向的三角形：</span>
+</p>
+
+<img class="" src="https://ofw1nwn63.qnssl.com/Pseudo-class/Pseudo-class-triangle.png" alt="triangle black" title="triangle" >
+<h3 id="toc_2">绘制微信QQ对话框</h3>
+
+<p class="md_block">
+    <span class="md_line">利用上述三角形的构成方法，加上伪类元素在一个边框前面加上一个小三角形，代码如下</span>
+</p>
+
+<div class="codehilite code_lang_css  highlight"><pre><span></span><span class="nc">.test-div</span><span class="p">{</span>
+    <span class="nb">position</span><span class="o">:</span> <span class="nb">relative</span><span class="p">;</span>  <span class="c">/*日常相对定位*/</span>
+    <span class="nb">width</span><span class="o">:</span><span class="m">150px</span><span class="p">;</span>
+    <span class="nb">height</span><span class="o">:</span><span class="m">36px</span><span class="p">;</span>
+    <span class="nb">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="m">5px</span><span class="p">;</span>
+    <span class="nb">border</span><span class="o">:</span><span class="nb">black</span> <span class="m">1px</span> <span class="nb">solid</span><span class="p">;</span>
+    <span class="nb">background</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">245</span><span class="o">,</span><span class="m">245</span><span class="o">,</span><span class="m">245</span><span class="o">,</span><span class="m">1</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nc">.test-div</span><span class="nd">:before</span><span class="o">,</span><span class="nc">.test-div</span><span class="nd">:after</span><span class="p">{</span>
+    <span class="nb">content</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>  <span class="c">/*:before和:after必带技能，重要性为满5颗星*/</span>
+    <span class="nb">display</span><span class="o">:</span> <span class="nb">block</span><span class="p">;</span>
+    <span class="nb">position</span><span class="o">:</span> <span class="nb">absolute</span><span class="p">;</span>  <span class="c">/*日常绝对定位*/</span>
+    <span class="nb">top</span><span class="o">:</span><span class="m">8px</span><span class="p">;</span>
+    <span class="nb">width</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nb">height</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nb">border</span><span class="o">:</span><span class="m">6px</span> <span class="nb">transparent</span> <span class="nb">solid</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.test-div</span><span class="nd">:before</span><span class="p">{</span>
+    <span class="nb">left</span><span class="o">:-</span><span class="m">11px</span><span class="p">;</span>
+    <span class="nb">border-right-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">245</span><span class="o">,</span><span class="m">245</span><span class="o">,</span><span class="m">245</span><span class="o">,</span><span class="m">1</span><span class="p">);</span>
+    <span class="nb">z-index</span><span class="o">:</span><span class="m">1</span>
+<span class="p">}</span>
+<span class="nc">.test-div</span><span class="nd">:after</span><span class="p">{</span>
+    <span class="nb">left</span><span class="o">:-</span><span class="m">12px</span><span class="p">;</span>
+    <span class="nb">border-right-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">1</span><span class="p">);</span>
+    <span class="nb">z-index</span><span class="o">:</span> <span class="m">0</span>
+<span class="p">}</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block md_has_block_below md_has_block_below_img">
+    <span class="md_line">效果如下所示，这就是简单的一个微信QQ对话框：</span>
+</p>
+
+<img class="" src="https://ofw1nwn63.qnssl.com/Pseudo-class/Pseudo-class-Psetalkbox.png" alt="talkbox" title="talk-box" >
+<h3 id="toc_3">引号的运用</h3>
+
+<p class="md_block">
+    <span class="md_line">在内容前后加上引号，以下截图效果是加了另外的效果。</span>
+</p>
+
+<div class="codehilite code_lang_css  highlight"><pre><span></span><span class="nt">blockquote</span><span class="nd">:before</span><span class="p">{</span>
+    <span class="nb">content</span><span class="err">：</span><span class="nb">open-quote</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">blockquote</span><span class="nd">:after</span><span class="p">{</span>
+    <span class="nb">content</span><span class="o">:</span> <span class="n">clase</span><span class="o">-</span><span class="n">quote</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<!--block_code_end--><img class="" src="https://ofw1nwn63.qnssl.com/Pseudo-class/Pseudo-class-content-open-quote.png" alt="content-quote" title="content-quote" > </div>
+        </div>
+
+    </div>
+
+
+
+
+
+<script>
+    // auto focus for menu
+    window.onload = function(){
+        var sidebar = document.getElementById('sidebar');
+        var current = document.getElementsByClassName('selected')[0];
+        if (current && sidebar){
+            sidebar.scrollTop = current.offsetTop - sidebar.clientHeight/2 + 100
+        }
+    };
+</script>
+
+
+
+
+</body>
+
+</html>

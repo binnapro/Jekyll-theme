@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BlogPages</title>
+
+    <meta charset="UTF-8"/>
+
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+
+    <meta name="HandheldFriendly" content="true"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+    <link href="./asset/farbox/basic.css" type="text/css" rel="stylesheet"/>
+    <link href="./asset/farbox/main.css" type="text/css" rel="stylesheet"/>
+
+    <style type="text/css">
+        
+            span.md_line{margin-bottom:0.5em; display:block; line-height:1.89}
+            .md_line br{ display: none;}
+            
+    </style>
+
+    <script>
+        var flowchat_options = {
+            'x': 0, 'y': 0, 'line-width': 1, 'line-length': 50, 'text-margin': 10, 'font-size': 13,
+            'font-color': '#3c3c3c', 'line-color': '#666666', 'element-color': '#666666', 'fill': 'transparent',
+            'yes-text': 'yes', 'no-text': 'no', 'arrow-end': 'block', 'class': 'flowchart', 'scale': 1,
+            'symbols': { 'start': {}, 'end': {}, 'condition': {}, 'inputoutput': {}, 'operation': {}, 'subroutine': {}}
+        }
+    </script>
+    <script type="text/javascript" src="./asset/other/raphael-min.js"></script>
+    <script type="text/javascript" src="./asset/other/flowchart.js"></script>
+    <script type="text/javascript" src="./asset/other/echarts.min.js"></script>
+
+
+</head>
+
+<body>
+    
+    <div id="sidebar">
+        <ul id="sidebar_body">
+        
+            
+            
+            
+            
+
+            
+                
+                <li class="level_1 directory not_valid_directory">
+                    <a href="#" class="">_posts</a>
+                </li>
+            
+
+            
+            <ul>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="./_posts/2016-07-09-js-ganerates-random-number.html" class="">JS生成不重复随机数的方法</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="./_posts/2016-07-29-Pseudo-class-element.html" class="">关于伪类元素:before和:after</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="./_posts/2016-10-06-build-ghost.html" class="">搭建Ghost平台的博客</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="./_posts/2016-10-25-markdown-grammar.html" class="">Markdown grammar</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="./_posts/2016-10-31-build-svn-git-server.html" class="">GIT及SVN服务器搭建</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="./_posts/2016-11-08-vertical-align.html" class="">对vertical-align的一些认识</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="./_posts/2016-11-20-CSS3-flex.html" class="">CSS3弹性盒子</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="./_posts/2016-11-29-formatting-contexts.html" class="">格式上下文</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="./_posts/2017-04-10-markeditor-test.html" class="">测试markeditor的功能</a>
+                </li>
+                
+            </ul>
+            
+        
+        </ul>
+    </div>
+
+    <div id="main">
+        <div class="content_body">
+            <h1 class="title"> BlogPages </h1>
+            <div class="doc_post"> <p style="text-align:center">please put a `index.md` in the root folder, which one will be this homepage.</p> </div>
+        </div>
+
+    </div>
+
+
+
+
+
+<script>
+    // auto focus for menu
+    window.onload = function(){
+        var sidebar = document.getElementById('sidebar');
+        var current = document.getElementsByClassName('selected')[0];
+        if (current && sidebar){
+            sidebar.scrollTop = current.offsetTop - sidebar.clientHeight/2 + 100
+        }
+    };
+</script>
+
+
+
+
+</body>
+
+</html>

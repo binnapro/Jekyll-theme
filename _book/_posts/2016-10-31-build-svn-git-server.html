@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GIT及SVN服务器搭建</title>
+
+    <meta charset="UTF-8"/>
+
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+
+    <meta name="HandheldFriendly" content="true"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+    <link href="../asset/farbox/basic.css" type="text/css" rel="stylesheet"/>
+    <link href="../asset/farbox/main.css" type="text/css" rel="stylesheet"/>
+
+    <style type="text/css">
+        
+            span.md_line{margin-bottom:0.5em; display:block; line-height:1.89}
+            .md_line br{ display: none;}
+            
+    </style>
+
+    <script>
+        var flowchat_options = {
+            'x': 0, 'y': 0, 'line-width': 1, 'line-length': 50, 'text-margin': 10, 'font-size': 13,
+            'font-color': '#3c3c3c', 'line-color': '#666666', 'element-color': '#666666', 'fill': 'transparent',
+            'yes-text': 'yes', 'no-text': 'no', 'arrow-end': 'block', 'class': 'flowchart', 'scale': 1,
+            'symbols': { 'start': {}, 'end': {}, 'condition': {}, 'inputoutput': {}, 'operation': {}, 'subroutine': {}}
+        }
+    </script>
+    <script type="text/javascript" src="../asset/other/raphael-min.js"></script>
+    <script type="text/javascript" src="../asset/other/flowchart.js"></script>
+    <script type="text/javascript" src="../asset/other/echarts.min.js"></script>
+
+
+</head>
+
+<body>
+    
+        <a href="../index.html" id="go_to_home"> &lt; home </a>
+    
+    <div id="sidebar">
+        <ul id="sidebar_body">
+        
+            
+            
+            
+            
+
+            
+                
+                <li class="level_1 directory not_valid_directory">
+                    <a href="#" class="">_posts</a>
+                </li>
+            
+
+            
+            <ul>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-07-09-js-ganerates-random-number.html" class="">JS生成不重复随机数的方法</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-07-29-Pseudo-class-element.html" class="">关于伪类元素:before和:after</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-10-06-build-ghost.html" class="">搭建Ghost平台的博客</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-10-25-markdown-grammar.html" class="">Markdown grammar</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-10-31-build-svn-git-server.html" class="selected">GIT及SVN服务器搭建</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-11-08-vertical-align.html" class="">对vertical-align的一些认识</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-11-20-CSS3-flex.html" class="">CSS3弹性盒子</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-11-29-formatting-contexts.html" class="">格式上下文</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2017-04-10-markeditor-test.html" class="">测试markeditor的功能</a>
+                </li>
+                
+            </ul>
+            
+        
+        </ul>
+    </div>
+
+    <div id="main">
+        <div class="content_body">
+            <h1 class="title"> GIT及SVN服务器搭建 </h1>
+            <div class="doc_post"> <h3 id="toc_0">git服务器搭建</h3>
+
+<p class="md_block">
+    <span class="md_line">虽然git的初衷是为了开源，但是有些时候我们还是需要一个私密的空间。尽管github也提供了私密仓库，但是这是收费的。我们想的是在自己的服务器上搭建git服务器，尽管所有的私人电脑都可以作为一台服务器，我们还是想在有一个公共的地方放置我们的代码，以下就是git服务器的搭建教程。</span>
+</p>
+
+
+<h4 id="toc_1">安装git</h4>
+
+<p class="md_block">
+    <span class="md_line">centos的服务器系统可以用以下命令安装：</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>sudo yum install git 
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">ubuntu的服务器系统可以用以下命令安装：</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>sudo apt-get install git
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">当然除了上述方法，linux系统都是可以通过编译源码安装的。</span>
+</p>
+
+
+<h4 id="toc_2">创建git用户</h4>
+
+<p class="md_block">
+    <span class="md_line">创建一个git用户，用来运行git服务：</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>sudo adduser git
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">创建的用户当然也可以删除，这里提供一种删除用户，该方法会顺带删除该用户的文件：</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>sudo userdel -f git
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">创建了用户之后，在<code>/home</code>目录下会多出一个<code>git</code>的文件夹，这个文件就代表了用户，我们要在这里存公钥，往下看……</span>
+</p>
+
+
+<h4 id="toc_3">创建证书登录</h4>
+
+<p class="md_block">
+    <span class="md_line">切换到刚创建的git用户</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>su - git
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">如果要切换回去的话，稍微有点不一样</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>su root
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">切换了用户之后，你能看到新起一行开始的root变成了git，这说明用户切换成功了。然后我们进入<code>/home</code>，在这里创建一个文件夹<code>.ssh</code></span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>mkdir .ssh
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">给文件夹分配权限</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>chmod <span class="m">700</span> .ssh
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">在.ssh文件夹里面创建一个authorized_keys文件</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>touch ~/.ssh/authorized_keys
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">给文件分配权限</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>chmod <span class="m">644</span> ~/.ssh/authorized_keys
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">收集所有的需要登录用户的公钥，就是每个人<code>id_rsa.pub</code>文件里面的代码，我们把自己的电脑和github关联起来的时候用的也是这个公钥，把他们复制到authorized_keys文件中，每输入一个公钥，记得换行。</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>vi ~/.ssh/authorized_keys <span class="c1">#打开文件，添加公钥</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line"><strong>注意：</strong>这里说明一下，git用户不设置密码，clone的时候也不需要密码。但是git用户设置了密码， 但是还是不想通过输入密码来clone项目，就需要设置文件权限了，原因如下：</span>
+</p>
+
+
+<pre><code>sshd为了安全，对属主的目录和文件权限有所要求。如果权限不对，则ssh的免密码登陆不生效。
+用户目录权限为 755 或者 700，就是不能是77x。
+.ssh目录权限一般为755或者700。
+rsa_id.pub 及 authorized_keys权限一般为644。
+rsa_id权限必须为600。</code></pre>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">所以这里设置了一下文件权限，所有步骤做完之后，你可以不用输入密码就能clone项目代码。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">这里提一下本地生成key的方法，在git-bash里面跑命令<code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</code>，生成的key在<code>C:\Users\yourname\.ssh\id_rsa.pub</code>文件里。</span>
+</p>
+
+
+<h4 id="toc_4">初始化git仓库</h4>
+
+<p class="md_block">
+    <span class="md_line">先选定一个目录作为Git仓库，假定是<code>/srv/binna.git</code>，先进入<code>/srv</code>目录，在这里创建一个裸仓库，创建裸仓库的命令如下。</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>sudo git init --bare binna.git <span class="c1">#输入命令可以看到binna.git文件，这是裸仓库，什么都没有</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line"><strong>注意：</strong>有时候输入上述命令报错了，那是因为sudo的权限不够，好像是只读的原因，不能写文件。所以要么修改sudo的权限，要么用root用户操作，但是反正都是要切回root用户进行操作的，就直接用root用户操作上述命令好了。但是现在创建出来的文件是root用户的。我们想要的效果是这个文件是git用户的。往下看...</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">通过上述操作，Git就会创建一个裸仓库，裸仓库没有工作区，因为服务器上的Git仓库纯粹是为了共享，所以不让用户登录到服务器修改工作区，并且服务器上的Git仓库通常以<code>.git</code>结尾。上面说道创建的文件是root用户的，然后修改仓库的拥有者和群组，让他变成git用户的。</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>sudo chown -R git:git binna.git
+</pre></div>
+
+<!--block_code_end-->
+<h4 id="toc_5">禁用shell登录。</h4>
+
+<p class="md_block">
+    <span class="md_line">处于安全考虑，第二步创建的git用户不允许登录shell，这可以通过编译<code>/etc/passed</code>文件完成。</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>vi /etc/passwd
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">找到类似下面的一行，一般是在最下面</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>git:x:1001:1001:,,,:/home/git:/bin/bash
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">改为</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>git:x:1001:1001:,,,:/home/git:/bin/git-shell
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">这样，<code>git</code>用户可以正常通过ssh使用git，但是无法登录shell，因为我们为<code>git</code>用户指定的<code>git-shell</code>每次登录就自动退出。</span>
+</p>
+
+
+<h4 id="toc_6">克隆仓库</h4>
+
+<p class="md_block">
+    <span class="md_line">现在可以通过git clone命令克隆仓库了，在各自的电脑上运行：</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>git clone git@server:/srv/binna.git
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">这样就可以本地拷贝这个文件了。</span>
+</p>
+
+
+<p class="md_block md_has_block_below md_has_block_below_img">
+    <span class="md_line"><strong>特例：</strong>一般到这一步就没什么问题了，但是我碰到下面的一个问题</span>
+</p>
+
+<img class="" src="https://ofw1nwn63.qnssl.com/git-svn-server/git-error.png" alt="git error" title="git error" >
+<p class="md_block">
+    <span class="md_line">这里提示说“远程host身份证明已经改变”。原因是远程的系统改变了，那么秘钥也就改变了，所以保存在本地的秘钥就失效了。能碰到这个问题的说明已经在这个服务器上进行过多次裸仓库搭建操作了，还重装了系统。。。。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">解决方法，打开各自电脑的<code>know_hosts</code>，删除相应行（我的是最后一行），相应行都是有ip地址的，仔细看下。</span>
+</p>
+
+
+<h3 id="toc_7">svn服务器搭建</h3>
+
+<blockquote>
+
+<p class="md_block">
+    <span class="md_line">引用自文章<a class="md_compiled" href="http://denight.leanote.com/post/Lnmp%E4%B8%8B%E6%90%AD%E5%BB%BASvn%E6%9C%8D%E5%8A%A1%E5%99%A8">Lnmp下搭建svn服务器简明步骤</a></span>
+</p>
+
+</blockquote>
+
+<h4 id="toc_8">说明</h4>
+
+<p class="md_block">
+    <span class="md_line">下文中PROJECT、USER1、USER2、YOUR_GROUP、PASSWD1、PASSWD2等全大写字符串均为举例说明，替换成相应名字就好。</span>
+</p>
+
+
+<h4 id="toc_9">安装</h4>
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>yum install subversion
+</pre></div>
+
+<!--block_code_end-->
+<h4 id="toc_10">建立版本库文件夹，并给权限777</h4>
+
+<p class="md_block">
+    <span class="md_line">比如我们想在<code>/srv/svn</code>创建版本库，先进入<code>/srv</code></span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span><span class="nb">cd</span> /srv
+mkdir svn
+chmod <span class="m">777</span> -R svn  <span class="c1"># 给文件777的权限，也就是所有用户对改文件都有读写执行的权限</span>
+</pre></div>
+
+<!--block_code_end-->
+<h4 id="toc_11">创建版本库</h4>
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>svnadmin create svn/PROJECT <span class="c1"># PEOJECT就是项目的名称</span>
+</pre></div>
+
+<!--block_code_end-->
+<h4 id="toc_12">配置svn</h4>
+
+<h5 id="toc_13">配置svnserve.conf</h5>
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>vi svn/PROJECT/conf/svnserve.conf
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">将内容中注释掉的以下部分去掉#和空格，并将<code>anon-access=read</code>改为<code>anon-access=none</code>。</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>anon-access <span class="o">=</span> none
+auth-access <span class="o">=</span> write
+password-db <span class="o">=</span> passwd
+authz-db <span class="o">=</span> authz
+</pre></div>
+
+<!--block_code_end-->
+<h5 id="toc_14">配置authz</h5>
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>vi svn/PROJECT/conf/authz
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">在[group]下加入</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span><span class="nv">YOUR_GROUP</span> <span class="o">=</span> USER1,USER2
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">在#[/foo/bar]下加入</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span><span class="o">[</span>/<span class="o">]</span>
+@YOUR_GROUP<span class="o">=</span>rw
+* <span class="o">=</span> r
+</pre></div>
+
+<!--block_code_end-->
+<h5 id="toc_15">配置passwd</h5>
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>vi svn/PROJECT/conf/passwd
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">在[users]下加入</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span><span class="nv">USER1</span><span class="o">=</span>PASSWD1
+<span class="nv">USER2</span><span class="o">=</span>PASSWD2
+</pre></div>
+
+<!--block_code_end-->
+<h4 id="toc_16">启动Svn服务</h4>
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>svnserve -d -r svn/
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">这里需要注意，这里设置的是svn服务器的根目录。在checkout的时候，以这个目录(/srv/svn)作为起点，可以添加多个版本库，访问的时候则可以用<code>svn://域名/PROJECT</code>checkout项目。</span>
+</p>
+
+
+<h4 id="toc_17">关闭服务</h4>
+
+<p class="md_block">
+    <span class="md_line">直接杀死相关进程即可</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>killall svnserve
+</pre></div>
+
+<!--block_code_end-->
+<h4 id="toc_18">客户端访问方法</h4>
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>svn checkout svn://server/PEOJECT
+</pre></div>
+
+<!--block_code_end-->
+<h4 id="toc_19">可能出现的问题</h4>
+
+<h5 id="toc_20">Centos7下客户端无法访问</h5>
+
+<p class="md_block">
+    <span class="md_line">这是应为Centos7下，原先的iptable被替换了firewald，所以对iptable的防火墙设置是没有用的。因此如果想要让3690端口（svn服务器端口）对外开放的话，则需要对firewald进行配置。</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>firewall-cmd --permanent --query-port<span class="o">=</span>3690/tcp
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">通过上述命令可以查看3689端口是否开放。</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>irewall-cmd --permanent --add-port<span class="o">=</span>3690/tcp
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">通过上述命令则可以添加开放端口。</span>
+</p> </div>
+        </div>
+
+    </div>
+
+
+
+
+
+<script>
+    // auto focus for menu
+    window.onload = function(){
+        var sidebar = document.getElementById('sidebar');
+        var current = document.getElementsByClassName('selected')[0];
+        if (current && sidebar){
+            sidebar.scrollTop = current.offsetTop - sidebar.clientHeight/2 + 100
+        }
+    };
+</script>
+
+
+
+
+</body>
+
+</html>

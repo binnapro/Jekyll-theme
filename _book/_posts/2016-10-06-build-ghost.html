@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>搭建Ghost平台的博客</title>
+
+    <meta charset="UTF-8"/>
+
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+
+    <meta name="HandheldFriendly" content="true"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+    <link href="../asset/farbox/basic.css" type="text/css" rel="stylesheet"/>
+    <link href="../asset/farbox/main.css" type="text/css" rel="stylesheet"/>
+
+    <style type="text/css">
+        
+            span.md_line{margin-bottom:0.5em; display:block; line-height:1.89}
+            .md_line br{ display: none;}
+            
+    </style>
+
+    <script>
+        var flowchat_options = {
+            'x': 0, 'y': 0, 'line-width': 1, 'line-length': 50, 'text-margin': 10, 'font-size': 13,
+            'font-color': '#3c3c3c', 'line-color': '#666666', 'element-color': '#666666', 'fill': 'transparent',
+            'yes-text': 'yes', 'no-text': 'no', 'arrow-end': 'block', 'class': 'flowchart', 'scale': 1,
+            'symbols': { 'start': {}, 'end': {}, 'condition': {}, 'inputoutput': {}, 'operation': {}, 'subroutine': {}}
+        }
+    </script>
+    <script type="text/javascript" src="../asset/other/raphael-min.js"></script>
+    <script type="text/javascript" src="../asset/other/flowchart.js"></script>
+    <script type="text/javascript" src="../asset/other/echarts.min.js"></script>
+
+
+</head>
+
+<body>
+    
+        <a href="../index.html" id="go_to_home"> &lt; home </a>
+    
+    <div id="sidebar">
+        <ul id="sidebar_body">
+        
+            
+            
+            
+            
+
+            
+                
+                <li class="level_1 directory not_valid_directory">
+                    <a href="#" class="">_posts</a>
+                </li>
+            
+
+            
+            <ul>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-07-09-js-ganerates-random-number.html" class="">JS生成不重复随机数的方法</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-07-29-Pseudo-class-element.html" class="">关于伪类元素:before和:after</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-10-06-build-ghost.html" class="selected">搭建Ghost平台的博客</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-10-25-markdown-grammar.html" class="">Markdown grammar</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-10-31-build-svn-git-server.html" class="">GIT及SVN服务器搭建</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-11-08-vertical-align.html" class="">对vertical-align的一些认识</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-11-20-CSS3-flex.html" class="">CSS3弹性盒子</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2016-11-29-formatting-contexts.html" class="">格式上下文</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../_posts/2017-04-10-markeditor-test.html" class="">测试markeditor的功能</a>
+                </li>
+                
+            </ul>
+            
+        
+        </ul>
+    </div>
+
+    <div id="main">
+        <div class="content_body">
+            <h1 class="title"> 搭建Ghost平台的博客 </h1>
+            <div class="doc_post"> <p class="md_block">
+    <span class="md_line">主机空间是在19vps上买的，绑定域名可以不用备案。域名是在新网上注册的。</span>
+</p>
+
+
+<h3 id="toc_0">服务器</h3>
+
+<p class="md_block">
+    <span class="md_line">服务器的选择比较广，一般国内的主机空间在解析域名的时候都需要备案，备案过程比较费时间。所以我先选择了香港的服务器来进行测试。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">但是xshell在远程调试的时候，很慢，很慢，很慢，打算买个国内服务器。阿里云和腾讯云都有学生优惠，但是阿里云现在的学生优惠的服务器是windows系统的，不太喜欢，而腾讯云是linux系统的，所以打算使用腾讯云来学习。腾讯云是在每天中午12:00开抢的，还是比较好抢的。</span>
+</p>
+
+
+<h3 id="toc_1">域名</h3>
+
+<p class="md_block">
+    <span class="md_line">域名就比较简单了，新网万网都是可以买的。购买的域名绑定国外服务器不需要备案，但是用国内的服务器就需要备案了。购买了域名之后需要解析域名，一般在购买域名的网站就可以找到域名解析的网页，原理就是把你的域名和你的主机空间的IP地址连接起来。我买的新网的域名，用的也是新网的域名解析，注意，域名在购买的时候有个模版，你可以选择快速慢板，但是最好一开始就写好模版，之后再写很麻烦，没有写好模版是会出问题的，毕竟没有你的信息，不能证明这是你的域名嘛。</span>
+</p>
+
+
+<h3 id="toc_2">工具</h3>
+
+<p class="md_block">
+    <span class="md_line">连接控制主机空间的软件叫做Xshell</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">给远程空间上传文件的软件叫做Xftp</span>
+</p>
+
+
+<h3 id="toc_3">安装LNMP</h3>
+
+<p class="md_block md_has_block_below md_has_block_below_img">
+    <span class="md_line">我使用了LNMP(Linux+nginx+mysql+phpmyadmin)一键搭载网站环境。nginx是一个服务器软件，他和apache是类型的作用。如果只是用来显示没有使用数据库的前端网页，只需要安装服务器软件就可以了，首先打开xshell终端，新建会话，在名称的地方为自己的这个会话窗口取个名字，主机的输入框输入ip地址，协议用看你用的连接了，一般默认ssh。</span>
+</p>
+
+<img class="" src="https://ofw1nwn63.qnssl.com/build-ghost/xshell-step1.png" alt="xshell-step1" title="" >
+<p class="md_block md_has_block_below md_has_block_below_img">
+    <span class="md_line">然后点击用户身份验证，输入用户名和密码，用户名和密码是在购买主机空间的时候得到的。</span>
+</p>
+
+<img class="" src="https://ofw1nwn63.qnssl.com/build-ghost/xshell-setp2.png" alt="xshell-setp2" title="" >
+<p class="md_block md_has_block_below md_has_block_below_img">
+    <span class="md_line">输入完点击确定，就会得到下面的界面，然后点击，连接就可以了。</span>
+</p>
+
+<img class="" src="https://ofw1nwn63.qnssl.com/build-ghost/xshell-step3.png" alt="xshell-setp3" title="" >
+<p class="md_block md_has_block_below md_has_block_below_img">
+    <span class="md_line">连接成功会有如下界面。</span>
+</p>
+
+<img class="" src="https://ofw1nwn63.qnssl.com/build-ghost/xshell-ste4.png" alt="xshell-setp4" title="" >
+<p class="md_block">
+    <span class="md_line">接下来就是下载LNMP安装包，在#后面输入下面的内容</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>wget -c http://soft.vpser.net/lnmp/lnmp1.2.tar.gz     <span class="c1">#下载1.2版本的lnmp</span>
+tar zxvf lnmp1.2.tar.gz     <span class="c1">#解压</span>
+<span class="nb">cd</span> lnmp1.2    <span class="c1">#进入解压后的lnmp目录</span>
+./install.sh    <span class="c1">#开始进行安装操作</span>
+</pre></div>
+
+<!--block_code_end--><div class="codehilite code_lang_shell  highlight"><pre><span></span>+------------------------------------------------------------------------+
+<span class="p">|</span>          LNMP V1.2 <span class="k">for</span> Ubuntu Linux Server, Written by Licess          <span class="p">|</span>
++------------------------------------------------------------------------+
+<span class="p">|</span>        A tool to auto-compile <span class="p">&amp;</span> install LNMP/LNMPA/LAMP on Linux       <span class="p">|</span>
++------------------------------------------------------------------------+
+<span class="p">|</span>          For more information please visit http://www.lnmp.org <span class="p">;</span>        <span class="p">|</span>
++------------------------------------------------------------------------+
+Please setup root password of MySQL.<span class="o">(</span>Default password: root<span class="o">)</span>
+Please enter: root <span class="c1">#为你的mysql创建root密码</span>
+MySQL root password: <span class="nv">root</span>
+<span class="o">===========================</span>
+Do you want to <span class="nb">enable</span> or disable the InnoDB Storage Engine?
+Default enable,Enter your choice<span class="o">[</span>Y/n<span class="o">]</span>: n <span class="c1">#是否安装InnoDB</span>
+You will disable the InnoDB Storage Engine!
+<span class="o">===========================</span>
+You have <span class="m">5</span> options <span class="k">for</span> your DataBase install.
+1: Install MySQL 5.1.73
+2: Install MySQL 5.5.42 <span class="o">(</span>Default<span class="o">)</span>
+3: Install MySQL 5.6.23
+4: Install MariaDB 5.5.42
+5: Install MariaDB 10.0.17
+Enter your choice <span class="o">(</span>1, 2, 3, <span class="m">4</span> or 5<span class="o">)</span>: <span class="m">3</span> <span class="c1">#选择mysql版本</span>
+You will Install MySQL 5.6.23
+<span class="o">===========================</span>
+You have <span class="m">5</span> options <span class="k">for</span> your PHP install.
+1: Install PHP 5.2.17
+2: Install PHP 5.3.29
+3: Install PHP 5.4.41 <span class="o">(</span>Default<span class="o">)</span>
+4: Install PHP 5.5.25
+5: Install PHP 5.6.9
+Enter your choice <span class="o">(</span>1, 2, 3, <span class="m">4</span> or 5<span class="o">)</span>: <span class="m">5</span> <span class="c1">#选择php版本</span>
+You will install PHP 5.6.9
+<span class="o">===========================</span>
+You have <span class="m">3</span> options <span class="k">for</span> your Memory Allocator install.
+1: Don<span class="err">&#39;</span>t install Memory Allocator. <span class="o">(</span>Default<span class="o">)</span>
+2: Install Jemalloc
+3: Install TCMalloc
+Enter your choice <span class="o">(</span>1, <span class="m">2</span> or 3<span class="o">)</span>: <span class="m">1</span> 
+You will install not install Memory Allocator.    <span class="c1">#按任意键，设置完成，正式进入安装，预计20-40分钟完成</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">这样LNMP就安装好了，然后就是进行一些设置，输入lnmp vhost add进行设置，该设置的目的是在/usr/local/nginx/vhost下面创建一个简易的conf文件。当然可以手工创建这个文件。</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>lnmp vhost add 
++-------------------------------------------+
+<span class="p">|</span>    Manager <span class="k">for</span> LNMP, Written by Licess    <span class="p">|</span>
++-------------------------------------------+
+Please enter domain<span class="o">(</span>example: www.lnmp.org<span class="o">)</span>: root <span class="c1">#输入绑定的主域名</span>
+<span class="o">======================================</span>
+Your domain: <span class="nv">root</span>
+<span class="o">======================================</span>
+Do you want to add more domain name? <span class="o">(</span>y/n<span class="o">)</span> y <span class="c1">#是否绑定其它域名</span>
+Enter domain name<span class="o">(</span>example: lnmp.org *.lnmp.org<span class="o">)</span>: www.yuming.com <span class="c1">#输入其它域名</span>
+domain list: www.yuming.com
+Please enter the directory <span class="k">for</span> the domain: yuming.com
+<span class="o">(</span>Default directory: /home/wwwroot/yuming.com<span class="o">)</span>: <span class="c1">#默认创建的网站文件所在目录</span>
+Virtual Host Directory: /home/wwwroot/yuming.com
+<span class="o">===========================</span>
+Allow Rewrite rule? <span class="o">(</span>y/n<span class="o">)</span>
+<span class="o">===========================</span>
+y <span class="c1">#是否添加伪静态文件</span>
+Please enter the rewrite of programme:
+wordpress,discuz,typecho,sablog,dabr rewrite was exist.
+<span class="o">(</span>Default rewrite: other<span class="o">)</span>:typecho 
+<span class="o">===========================</span>
+You choose <span class="nv">rewrite</span><span class="o">=</span><span class="nv">typecho</span>
+<span class="o">===========================</span>
+<span class="o">===========================</span>
+Allow access_log? <span class="o">(</span>y/n<span class="o">)</span>
+<span class="o">===========================</span>
+n <span class="c1">#是否启用日志文件</span>
+<span class="o">======================================================</span>
+Create database and MySQL user with same name <span class="o">(</span>y/n<span class="o">)</span>
+<span class="o">======================================================</span>
+y <span class="c1">#是否创建mysql数据库</span>
+verify your current MySQL root password: **** <span class="c1">#输入安装时的mysql数据库root密码</span>
+Warning: Using a password on the <span class="nb">command</span> line interface can be insecure.
+MySQL root password correct.
+Enter database name: database <span class="c1">#创建数据库用户名</span>
+Your will create a database and MySQL user with same name: database
+Please enter password <span class="k">for</span> mysql user vpsmm_user: passwd
+Your password: passwd <span class="c1">#创建相应密码</span>
+
+Press any key to start create virtul host...
+
+Create Virtul Host directory......
+<span class="nb">set</span> permissions of Virtual Host directory......
+You <span class="k">select</span> the exist rewrite rule:/usr/local/nginx/conf/typecho.conf
+Gracefully shutting down php-fpm . <span class="k">done</span>
+Starting php-fpm  <span class="k">done</span>
+Test Nginx configure file......
+nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok
+nginx: configuration file /usr/local/nginx/conf/nginx.conf <span class="nb">test</span> is successful
+
+Restart Nginx......
+Warning: Using a password on the <span class="nb">command</span> line interface can be insecure.
+Warning: Using a password on the <span class="nb">command</span> line interface can be insecure.
+User vpsmm_user create Sucessfully.
+Warning: Using a password on the <span class="nb">command</span> line interface can be insecure.
+Warning: Using a password on the <span class="nb">command</span> line interface can be insecure.
+Warning: Using a password on the <span class="nb">command</span> line interface can be insecure.
+Database: vpsmm_user create Sucessfully.
+Warning: Using a password on the <span class="nb">command</span> line interface can be insecure.
+Warning: Using a password on the <span class="nb">command</span> line interface can be insecure.
+GRANT ALL PRIVILEGES ON vpsmm_user Sucessfully.
+Warning: Using a password on the <span class="nb">command</span> line interface can be insecure.
+FLUSH PRIVILEGES Sucessfully.
+<span class="o">================================================</span>
+Virtualhost infomation:
+Your domain: vpsmm.com
+Home Directory: /home/wwwroot/vpsmm.com
+Rewrite: typecho
+Enable log: no
+Database username: vpsmm_user
+Database userpassword: vpsmmpasswd
+Database Name: vpsmm_user
+Create ftp account: <span class="nv">no</span>
+<span class="o">================================================</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">至此我们可以把自己写的页面放在<code>/home/wwwroot/www.yuming.com</code>文件夹内，输入网址就可以看到自己的网页界面。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">这里使用的端口是80端口，然后我们要安装的ghost是在2368端口上运行的。</span>
+</p>
+
+
+<h3 id="toc_4">ghost博客安装</h3>
+
+<h4 id="toc_5">step1 安装nodejs</h4>
+
+<p class="md_block">
+    <span class="md_line">ghost是依托于nodejs的，所以需要先搭建node环境。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">同样是下载解压安装。</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>wget http://nodejs.org/dist/v0.10.40/node-v0.10.40.tar.gz  
+tar zxvf node-v0.10.40.tar.gz  
+<span class="nb">cd</span> node-v0.10.40  
+./configure 
+make <span class="o">&amp;&amp;</span> make install 
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">命令执行完毕之后，检测以下环境是否配置成功。</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>node -v
+v0.10.40
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">npm和nodejs一起安装在你的主机上了，同样查看npm的版本。</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>npm -v
+1.4.28
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">这里需要<strong>注意</strong>，一定要更新npm的版本，否则安装ghost依赖包的时候会报错。更新方法如下</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>npm update -g npm
+</pre></div>
+
+<!--block_code_end-->
+<h4 id="toc_6">setp2 配置ghost</h4>
+
+<p class="md_block">
+    <span class="md_line">首先新建一个工作空间来存放Ghost</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>mkdir -p /var/www
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">下载Ghost并解压</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>wget http://dl.ghostchina.com/Ghost-0.7.4-zh-full.zip  
+unzip Ghost-0.7.4-zh-full.zip -d ghost  
+<span class="nb">cd</span> ghost
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">以下命令都在ghost文件下面下运行，可以输入<code>pwd</code>查看当前路径。接着修改默认配置</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>cp config.example.js config.js  <span class="c1">#复制config.example.js 并命名为config.js</span>
+vi config.js   <span class="c1">#vi即vim，用vim打开这个配置文件，进行配置</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">Ghost有产品模式、开发模式、和测试模式，我们使用production模式。修改#注释部分（现在我们进入vi环境，想要修改这个文件，按i，左下角会出现<code>-INSERT</code>表示可以修改这个文件。修改完成之后，按esc，然后左下角的<code>-INSERT</code>会消失，输入:wq!，保存退出）</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span><span class="nv">config</span> <span class="o">=</span> <span class="o">{</span>
+    // <span class="c1">### Production</span>
+    // When running Ghost in the wild, use the production environment
+    // Configure your URL and mail settings here
+    production: <span class="o">{</span>
+        url: <span class="s1">&#39;http://www.yuming.win&#39;</span>, <span class="c1">#将&#39;&#39;内改成你自己的域名，带上http</span>
+        mail: <span class="o">{}</span>,
+        database: <span class="o">{</span>
+            client: <span class="s1">&#39;sqlite3&#39;</span>,
+            connection: <span class="o">{</span>
+                filename: path.join<span class="o">(</span>__dirname, <span class="s1">&#39;/content/data/ghost.db&#39;</span><span class="o">)</span>
+            <span class="o">}</span>,
+            debug: <span class="nb">false</span>
+        <span class="o">}</span>,
+// 配置MySQL 数据库
+    /*database: <span class="o">{</span>
+        client: <span class="s1">&#39;mysql&#39;</span>,
+        connection: <span class="o">{</span>
+            host     : <span class="s1">&#39;host&#39;</span>,
+            user     : <span class="s1">&#39;user&#39;</span>,
+            password : <span class="s1">&#39;password&#39;</span>,
+            database : <span class="s1">&#39;database&#39;</span>,
+            charset  : <span class="s1">&#39;utf8&#39;</span>
+        <span class="o">}</span>,
+        debug: <span class="nb">false</span>
+    <span class="o">}</span>,*/
+    server: <span class="o">{</span>
+    // Host to be passed to node<span class="s1">&#39;s `net.Server#listen()`</span>
+<span class="s1">        host: &#39;</span>0.0.0.0<span class="s1">&#39;,  #将127.0.0.1改成0.0.0.0，前者表示本机，也就在本地用用，联网最好别用。后者标识本机全部的ip地址，会自动适配的</span>
+<span class="s1">    // Port to be passed to node&#39;</span>s <span class="sb">`</span>net.Server#listen<span class="o">()</span><span class="sb">`</span>, <span class="k">for</span> iisnode <span class="nb">set</span> this to <span class="sb">`</span>process.env.PORT<span class="sb">`</span>
+        port: <span class="s1">&#39;2368&#39;</span>
+    <span class="o">}</span>,
+<span class="o">}</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">现在就已经配置好了，到这里，我们还不能运行ghost，因为我们的ghost并不是完整的，我们只是下载了ghost的部分，还有一些文件需要安装，输入以下代码安装ghost的依赖包</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>npm install --production
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">安装完了之后，我们可以运行ghost了，使用production模式运行ghost，输入以下代码</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>npm start --production
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block md_has_block_below md_has_block_below_img">
+    <span class="md_line">此时ghost运行在2368端口。</span>
+</p>
+
+<img class="" src="https://ofw1nwn63.qnssl.com/build-ghost/ghost.png" alt="ghost" title="" >
+<p class="md_block">
+    <span class="md_line">在浏览器输入<code>域名:2368</code>可以看到自己的ghost。但是上图提醒我们按ctrl+c关闭ghost，所以当我们按ctrl+c或者关闭终端的时候，ghost就会关闭，我们不可能一直开着xshell，怎么让ghost保持运行有很多方法，比如screen再开个线程，forever，pm2等。我们这里使用pm2。pm2是需要安装的。使用npm全局安装</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>npm install pm2 -g
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">以下整理了pm2的使用方法</span>
+</p>
+
+
+<pre><code>安装：npm install -g pm2
+启动程序：pm2 start &lt;app_name|id|all&gt;
+可以指定应用名称 pm2 start app,js --name=test
+
+列举进程：pm2 list
+退出程序：pm2 stop &lt;app_name|id|all&gt;
+重起应用：pm2 restart
+程序信息：pm2 describe id|all
+监控：pm2 monit
+实时集中log处理: pm2 logs
+API:pm2 web (端口：9615 )</code></pre>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">我们使用下面的命令指定工厂模式，指定程序入口。最后给pm2进程取名为ghost</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span><span class="nv">NODE_ENV</span><span class="o">=</span>production pm2 start index.js --name <span class="s2">&quot;ghost&quot;</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block md_has_block_below md_has_block_below_img">
+    <span class="md_line">通过pm2 list可以看到自己的进程</span>
+</p>
+
+<img class="" src="https://ofw1nwn63.qnssl.com/build-ghost/pm2.png" alt="pm2" title="" >
+<p class="md_block">
+    <span class="md_line">这说明pm2正在运行ghost，我们关掉终端也能打开博客了。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">接下来让pm2知道在开机的时候运行我们的网站</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>pm2 startup upstart <span class="c1">#这是ubuntu下面的命令，arch: pm2 startup systemctl;cenos:pm2 startup centos</span>
+pm2 save
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">至此，pm2就可以一直保持ghost运行了。</span>
+</p>
+
+
+<p class="md_block md_has_block_below md_has_block_below_img">
+    <span class="md_line">我们在浏览器输入 域名:2368 可以看到ghost的主页，输入 域名:2368/ghost 进入ghost后台，第一次进入后台输入的是管理员帐号密码。当我们设置了反向代理之后，可以通过 域名 进入主页，域名/ghost 进入后台。</span>
+</p>
+
+<img class="" src="https://ofw1nwn63.qnssl.com/build-ghost/website.png" alt="website" title="" >
+<h3 id="toc_7">nginx反向代理</h3>
+
+<p class="md_block">
+    <span class="md_line">通过上面的方法我们已经可以在浏览器输入<code>域名:2368</code>打开博客，但是大家还是想要在通过在浏览器输入<code>域名</code>直接打开自己的博客，这就需要设置nginx的反向代理，也就是把80端口映射到2368端口。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">进入nginx配置文件。路径如下<code>/usr/local/nginx/conf/vhost/</code>。在这个目录下创建一个Nginx代理的配置文件，并将代理执行本地的Ghost端口</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>touch ghost.conf <span class="c1">#创建新的配置文件，命名为ghost.conf</span>
+vi ghost.conf <span class="c1">#打开这个新文件</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">将如下内容拷贝到新文件中：</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>server <span class="o">{</span>
+  listen 80<span class="p">;</span>
+  server_name yuming.com www.yuming.com<span class="p">;</span> <span class="c1">#你的域名</span>
+  location / <span class="o">{</span>
+    proxy_set_header   X-Real-IP <span class="nv">$remote_addr</span><span class="p">;</span>
+    proxy_set_header   Host      <span class="nv">$http_host</span><span class="p">;</span>
+    proxy_pass         http://127.0.0.1:2368<span class="p">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">编辑完成，按下esc，输入:wq!回车保存退出。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">重启nginx服务器，让配置生效：</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>service nginx restart
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">ghost主题模版</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">模版文件在content/themem目录，上传模版文件到这个目录。然后使用pm2 restart ghost重启ghost。</span>
+</p>
+
+
+<h3 id="toc_8">80端口的开启</h3>
+
+<p class="md_block">
+    <span class="md_line">通过上面的方法我们使用域名只能访问ghost博客了，自己写的小网页不能查看了。其实还是可以看的。只是这个域名现在绑定在了ghsot博客而已，我们可以通过修改端口号来查看，但是我们还是不想添加端口号，每次输入麻烦。所以再绑定一个域名上去。</span>
+</p>
+
+<div class="codehilite code_lang_shell  highlight"><pre><span></span>lnmp vhost add
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">可以再创建一个nginx配置文件，在这个配置文件里面已经指明了端口（80）和根目录位置。把文件存放在这个目录里面。在浏览器输入新的域名就可以访问了。</span>
+</p> </div>
+        </div>
+
+    </div>
+
+
+
+
+
+<script>
+    // auto focus for menu
+    window.onload = function(){
+        var sidebar = document.getElementById('sidebar');
+        var current = document.getElementsByClassName('selected')[0];
+        if (current && sidebar){
+            sidebar.scrollTop = current.offsetTop - sidebar.clientHeight/2 + 100
+        }
+    };
+</script>
+
+
+
+
+</body>
+
+</html>
