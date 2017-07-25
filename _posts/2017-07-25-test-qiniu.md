@@ -15,7 +15,3 @@ tags:
 
 
 
-
-![](https://ofw1nwn63.qnssl.com/blog/../image/P50305-094913-001.jpg)
-
-
