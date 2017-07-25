@@ -58,7 +58,7 @@ _site
 
 .z_sync_configs.data
 _posts/.sync
-image/
+_image/
 sync_changes.log
 
 sync_hook.script
